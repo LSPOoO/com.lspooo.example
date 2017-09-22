@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="navigation_text_size">14.0sp</dimen>
+    <dimen name="ActionBarTextSize">18.0dip</dimen>
+    <dimen name="action_bar_height">@dimen/DefaultActionbarHeightPort</dimen>
+    <dimen name="DefaultActionbarHeightPort">56.0dip</dimen>
+    <dimen name="DefaultActionbarHeightLand">40.0dip</dimen>
+
+    <dimen name="SmallTextSize">14.0dip</dimen>
+
+    <dimen name="OneDPPadding">1.0dip</dimen>
+
+    <dimen name="list_divider_height">1.0px</dimen>
+</resources>

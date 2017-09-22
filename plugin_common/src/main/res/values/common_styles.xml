@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Plugin_Theme" parent="@style/Base_Plugin_Theme">
+        <item name="android:checkboxStyle">@style/CheckBoxStyle</item>
+        <item name="android:buttonStyle">@style/BaseButtonStyle</item>
+        <item name="android:buttonStyleToggle">@style/BaseToggleButtonStyle</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:autoCompleteTextViewStyle">@style/BaseAutoCompleteTextViewStyle</item>
+        <item name="android:editTextStyle">@style/BaseEditTextStyle</item>
+        <item name="android:listViewStyle">@style/BaseListViewStyle</item>
+        <item name="android:radioButtonStyle">@style/BaseRadioButtonStyle</item>
+        <item name="android:textViewStyle">@style/BaseTextViewStyle</item>
+        <item name="android:dialogTheme">@style/BaseDialog</item>
+        <!--
+                <item name="android:windowAnimationStyle">@style/ECAnimation.Activity</item>
+        -->
+        <item name="android:fadingEdge">none</item>
+        <item name="android:fadingEdgeLength">0.0dip</item>
+    </style>
+
+    <style name="Base_Plugin_Theme" parent="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+    <style name="CheckBoxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:background">@drawable/choose_icon</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <style name="BaseListViewStyle" parent="@android:style/Widget.ListView">
+        <item name="android:divider">@color/list_divider</item>
+        <item name="android:dividerHeight">@dimen/list_divider_height</item>
+    </style>
+
+    <style name="BaseButtonStyle" parent="@android:style/Widget.Button" />
+    <style name="BaseEditTextStyle" parent="@android:style/Widget.EditText" />
+    <style name="BaseToggleButtonStyle" parent="@android:style/Widget.Button.Toggle" />
+    <style name="BaseAutoCompleteTextViewStyle" parent="@android:style/Widget.AutoCompleteTextView" />
+    <style name="BaseRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton" />
+    <style name="BaseDialog" parent="@android:style/Theme.Dialog" />
+    <style name="BaseTextViewStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColorLink">@color/text_color_link</item>
+    </style>
+
+</resources>

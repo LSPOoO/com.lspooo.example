@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SwipeTheme" parent="Base_Theme">
+        <item name="android:windowBackground">@*android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <style name="Base_Theme" parent="@style/Plugin_Theme">
+        <item name="android:textColorHighlight">@color/text_highlight_color</item>
+        <item name="android:textColorHint">@color/white_box_hint_text_color</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:actionModeBackground">@color/action_bar_color</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_clear_24</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
+        <item name="android:editTextColor">@color/search_text_color</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowAnimationStyle">@style/SlideAnimationStyle</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionBarStyle">@style/ActionBarStyle</item>
+        <item name="actionModeBackground">@color/action_bar_color</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_clear_24</item>
+        <item name="colorPrimary">@color/action_bar_color</item>
+        <item name="colorPrimaryDark">@color/action_bar_color</item>
+        <item name="colorAccent">@color/action_bar_color</item>
+        <item name="colorControlNormal">@color/action_bar_text_color</item>
+        <item name="android:textCursorDrawable">@drawable/blue_text_field_cursor</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:fadingEdgeLength">0.0dip</item>
+        <item name="popupMenuStyle">@style/PopupMenuStyle</item>
+    </style>
+
+    <style name="SlideAnimationStyle" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+        <item name="android:taskOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:taskOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:taskCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:taskCloseExitAnimation">@anim/slide_right_out</item>
+        <item name="android:taskToFrontEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:taskToFrontExitAnimation">@anim/slide_left_out</item>
+        <item name="android:taskToBackEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:taskToBackExitAnimation">@anim/slide_right_out</item>
+    </style>
+
+    <style name="PopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu" >
+        <item name="android:popupBackground">@drawable/ytx_ofm_menu_bg</item>
+    </style>
+
+    <style name="ActionBarStyle" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:actionMenuTextAppearance">@style/ActionBarMenuTextStyle</item>
+        <item name="android:actionMenuTextColor">@color/action_bar_text_color</item>
+        <item name="android:titleTextStyle">@style/ActionBar.TitleTextStyle</item>
+        <item name="android:subtitleTextStyle">@style/ActionBar.SubTitleTextStyle</item>
+        <item name="height">@dimen/action_bar_height</item>
+        <item name="android:actionBarSize">@dimen/action_bar_height</item>
+        <item name="actionBarSize">@dimen/action_bar_height</item>
+        <item name="displayOptions">showTitle</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="actionMenuTextColor">@color/action_bar_text_color</item>
+        <item name="searchViewStyle">@style/Theme.SearchView</item>
+        <item name="titleTextColor">@color/action_bar_text_color</item>
+        <item name="titleTextStyle">@style/ActionBar.TitleTextStyle</item>
+        <item name="subtitleTextStyle">@style/ActionBar.SubTitleTextStyle</item>
+    </style>
+
+    <style name="ActionBarMenuTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textSize">@dimen/navigation_text_size</item>
+    </style>
+
+    <style name="ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/ActionBarTextSize</item>
+        <item name="android:textColor">@color/action_bar_text_color</item>
+    </style>
+
+    <style name="ActionBar.SubTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/SmallTextSize</item>
+        <item name="android:textColor">@color/hint_text_color</item>
+    </style>
+
+    <style name="Theme.SearchView" parent="@style/Widget.AppCompat.SearchView">
+        <item name="defaultQueryHint">@string/app_search</item>
+        <item name="closeIcon">@drawable/ic_clear_24</item>
+        <item name="searchHintIcon">@null</item>
+        <item name="queryBackground">@color/white</item>
+    </style>
+</resources>
