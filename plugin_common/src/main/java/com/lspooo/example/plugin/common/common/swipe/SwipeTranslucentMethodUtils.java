@@ -1,4 +1,4 @@
-package com.lspooo.example.plugin.common.tools;
+package com.lspooo.example.plugin.common.common.swipe;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -7,13 +7,12 @@ import android.os.Build;
 import android.util.Log;
 
 
+import com.lspooo.example.plugin.common.tools.MethodInvoke;
+import com.lspooo.example.plugin.common.tools.SDKVersionUtils;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-/**
- * @author 容联•云通讯
- * @since 2016-06-23
- */
 public class SwipeTranslucentMethodUtils {
 
     private SwipeTranslucentMethodUtils() {

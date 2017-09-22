@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -17,9 +16,9 @@ import com.lspooo.example.plugin.common.tools.AnimatorUtils;
 import com.lspooo.example.plugin.common.tools.ECHandlerHelper;
 import com.lspooo.example.plugin.common.tools.MethodInvoke;
 import com.lspooo.example.plugin.common.tools.SDKVersionUtils;
-import com.lspooo.example.plugin.common.tools.SwipeActivityManager;
-import com.lspooo.example.plugin.common.tools.SwipeTranslucentMethodUtils;
-import com.lspooo.example.plugin.common.tools.ViewDragHelper;
+import com.lspooo.example.plugin.common.common.swipe.SwipeActivityManager;
+import com.lspooo.example.plugin.common.common.swipe.SwipeTranslucentMethodUtils;
+import com.lspooo.example.plugin.common.common.swipe.ViewDragHelper;
 
 import java.lang.ref.WeakReference;
 

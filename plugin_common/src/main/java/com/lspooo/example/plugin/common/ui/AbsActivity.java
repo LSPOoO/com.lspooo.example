@@ -17,9 +17,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
 import com.lspooo.example.plugin.common.R;
+import com.lspooo.example.plugin.common.common.swipe.SwipeTranslucentMethodUtils;
 import com.lspooo.example.plugin.common.tools.AnimatorUtils;
-import com.lspooo.example.plugin.common.tools.SwipTranslucentMethodUtils;
-import com.lspooo.example.plugin.common.tools.SwipeActivityManager;
+import com.lspooo.example.plugin.common.common.swipe.SwipeActivityManager;
 import com.lspooo.example.plugin.common.view.SwipeBackLayout;
 
 /**
@@ -36,7 +36,7 @@ public abstract class AbsActivity extends AppCompatActivity implements SwipeActi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(!enableConvertFromTranslucent()) {
-            SwipTranslucentMethodUtils.convertActivityFromTranslucent(this);
+            SwipeTranslucentMethodUtils.convertActivityFromTranslucent(this);
         }
         String[] actionArray = getReceiverAction();
         IntentFilter intentfilter = new IntentFilter();
@@ -201,18 +201,56 @@ public abstract class AbsActivity extends AppCompatActivity implements SwipeActi
     }
 
     /**
+     * 显示键盘
+     */
+    protected void toggleSoftInput() {
+        // Display the soft keyboard
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null) {
+            View localView = getCurrentFocus();
+            if (localView != null && localView.getWindowToken() != null) {
+                inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        }
+    }
+
+
+    /**
      * 隐藏键盘
      */
-    public void hideSoftKeyboard() {
+    protected void hideSoftKeyboard(View view) {
+        if (view == null) {
+            return;
+        }
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null) {
+            IBinder binder = view.getWindowToken();
+            if (binder != null)
+                inputMethodManager.hideSoftInputFromWindow(binder, 0);
+        }
+    }
+
+    /**
+     * 隐藏键盘
+     */
+    boolean hideSoftKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
             View localView = getCurrentFocus();
             if (localView != null && localView.getWindowToken() != null) {
                 IBinder windowToken = localView.getWindowToken();
-                inputMethodManager.hideSoftInputFromWindow(windowToken, 0);
+                boolean result = false;
+                try {
+                    result = inputMethodManager.hideSoftInputFromWindow(windowToken, 0);
+                } catch (Exception e) {
+                }
+                return result;
             }
         }
+
+        return false;
     }
+
 
     @Override
     protected void onDestroy() {

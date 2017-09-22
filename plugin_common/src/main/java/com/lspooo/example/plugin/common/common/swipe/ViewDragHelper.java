@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lspooo.example.plugin.common.tools;
+package com.lspooo.example.plugin.common.common.swipe;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;

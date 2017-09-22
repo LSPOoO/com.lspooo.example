@@ -13,8 +13,8 @@
         <item name="android:textColorHint">@color/white_box_hint_text_color</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:actionModeBackground">@color/action_bar_color</item>
-        <item name="android:actionModeCloseDrawable">@drawable/ic_clear_24</item>
-        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_close_black</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_black</item>
         <item name="android:editTextColor">@color/search_text_color</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowAnimationStyle">@style/SlideAnimationStyle</item>
@@ -22,7 +22,7 @@
         <item name="windowActionModeOverlay">true</item>
         <item name="actionBarStyle">@style/ActionBarStyle</item>
         <item name="actionModeBackground">@color/action_bar_color</item>
-        <item name="actionModeCloseDrawable">@drawable/ic_clear_24</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_close_black</item>
         <item name="colorPrimary">@color/action_bar_color</item>
         <item name="colorPrimaryDark">@color/action_bar_color</item>
         <item name="colorAccent">@color/action_bar_color</item>
@@ -85,8 +85,27 @@
 
     <style name="Theme.SearchView" parent="@style/Widget.AppCompat.SearchView">
         <item name="defaultQueryHint">@string/app_search</item>
-        <item name="closeIcon">@drawable/ic_clear_24</item>
+        <item name="closeIcon">@drawable/ic_close_black</item>
         <item name="searchHintIcon">@null</item>
         <item name="queryBackground">@color/white</item>
     </style>
+
+    <style name="SmallButtonStyle">
+        <item name="android:textSize">@dimen/SmallTextSize</item>
+        <item name="android:textColor">@color/white_color_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/SmallPadding</item>
+        <item name="android:paddingRight">@dimen/SmallPadding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">@dimen/SmallButtonWidth</item>
+        <item name="android:minHeight">@dimen/SmallButtonHeight</item>
+    </style>
+
+    <style name="SolidSmallButtonStyle" parent="@style/SmallButtonStyle">
+        <item name="android:textColor">@color/white_color_selector</item>
+        <item name="android:background">@drawable/blue_btn_style</item>
+    </style>
+
+
 </resources>

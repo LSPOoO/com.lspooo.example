@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.lspooo.example.plugin.common.R;
+import com.lspooo.example.plugin.common.common.swipe.ActivityTransition;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;

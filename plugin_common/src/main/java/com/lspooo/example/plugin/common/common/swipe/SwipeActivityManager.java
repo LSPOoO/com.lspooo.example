@@ -1,4 +1,4 @@
-package com.lspooo.example.plugin.common.tools;
+package com.lspooo.example.plugin.common.common.swipe;
 
 
 import java.lang.ref.WeakReference;

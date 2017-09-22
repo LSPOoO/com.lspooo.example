@@ -3,5 +3,12 @@
 
     <string name="app_send">发送</string>
     <string name="app_search">搜索</string>
-    <string name="app_share">分享</string>s
+    <string name="app_share">分享</string>
+    <string name="app_more">更多</string>
+    <string name="app_clear">清空</string>
+    <string name="app_back">返回</string>
+    <string name="app_remind">提醒</string>
+    <string name="app_revoke">撤回</string>
+
+    <string name="common_enter_activity">当前所在页面,</string>
 </resources>

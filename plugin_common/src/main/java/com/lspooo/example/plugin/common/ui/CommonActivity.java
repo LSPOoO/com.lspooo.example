@@ -23,4 +23,9 @@ public abstract class CommonActivity extends BaseActivity{
     public boolean buildActionBarPadding() {
         return false;
     }
+
+    @Override
+    public boolean isActionBarTitleMiddle() {
+        return false;
+    }
 }
