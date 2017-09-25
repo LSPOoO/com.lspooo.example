@@ -4,10 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.os.Build;
-import android.util.Log;
 
 
-import com.lspooo.example.plugin.common.tools.MethodInvoke;
 import com.lspooo.example.plugin.common.tools.SDKVersionUtils;
 
 import java.lang.reflect.Method;

@@ -2,4 +2,10 @@
     <string name="app_name">LSPOoO</string>
 
 
+    <string name="tab_communication_title">消息</string>
+    <string name="tab_contact_title">通讯录</string>
+    <string name="tab_find_title">发现</string>
+    <string name="tab_setting_title">我的</string>
+
+
 </resources>

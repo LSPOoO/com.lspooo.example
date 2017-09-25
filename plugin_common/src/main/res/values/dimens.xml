@@ -6,6 +6,7 @@
     <dimen name="DefaultActionbarHeightPort">56.0dip</dimen>
     <dimen name="DefaultActionbarHeightLand">40.0dip</dimen>
 
+    <dimen name="LittleTextSize">11.0dip</dimen>
     <dimen name="SmallestTextSize">12.0dip</dimen>
     <dimen name="SmallerTextSize">13.0dip</dimen>
     <dimen name="SmallTextSize">14.0dip</dimen>
@@ -17,6 +18,7 @@
 
     <dimen name="OneDPPadding">1.0dip</dimen>
     <dimen name="SmallestPadding">1.0dip</dimen>
+    <dimen name="SmallerPadding">3.0dip</dimen>
     <dimen name="LittlePadding">6.0dip</dimen>
     <dimen name="SmallPadding">8.0dip</dimen>
     <dimen name="NormalPadding">12.0dip</dimen>
@@ -28,6 +30,20 @@
 
     <dimen name="NormalIconSize">32.0dip</dimen>
     <dimen name="NormalButtonHeight">48.0dip</dimen>
+    <dimen name="SmallListItemHeight">48.0dip</dimen>
+    <dimen name="NormalListItemHeight">64.0dip</dimen>
     <dimen name="SmallButtonWidth">60.0dip</dimen>
     <dimen name="SmallButtonHeight">32.0dip</dimen>
+
+    <dimen name="ksw_md_thumb_ripple_size">42.0dp</dimen>
+    <dimen name="ksw_md_thumb_solid_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_top">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_bottom">10dp</dimen>
+    <dimen name="ksw_md_thumb_solid_size">20dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_size">21dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_offset">2dp</dimen>
+
+    <dimen name="bottom_tab_bar_height">54.0dip</dimen>
+
 </resources>

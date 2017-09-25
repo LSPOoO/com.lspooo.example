@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lspooo.example.plugin.common.R;
+import com.lspooo.example.plugin.common.common.bar.StatusBarCompat;
 import com.lspooo.example.plugin.common.common.menu.ActionMenuItem;
 import com.lspooo.example.plugin.common.common.menu.search.SearchViewHelper;
 import com.lspooo.example.plugin.common.tools.BackwardSupportUtil;
@@ -106,6 +107,7 @@ public abstract class BaseActivity extends AbsActivity{
                     LinearLayout.LayoutParams.MATCH_PARENT);
         }
         setContentView(mBaseLayoutView);
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.action_bar_color));
         initSwipeLayout();
         setNavigationOnClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -400,7 +402,7 @@ public abstract class BaseActivity extends AbsActivity{
                         menuItem.setTitle(menuItem.getTitle());
                         menuItem.setOnMenuItemClickListener(actionMenuItem.getItemClickListener());
                         MenuItemCompat.setShowAsAction(menuItem, MenuItem.SHOW_AS_ACTION_ALWAYS);
-                        if (actionMenuItem.getResId() == R.drawable.ic_more_black) {
+                        if (actionMenuItem.getResId() == R.drawable.ic_more_white) {
                             mOverFlowAction = actionMenuItem;
                             mOverFlowMenuItem = menuItem;
                         }
@@ -511,7 +513,7 @@ public abstract class BaseActivity extends AbsActivity{
         actionMenuItem.setItemClickListener(itemClickListener);
         actionMenuItem.setLongClickListener(longClickListener);
         actionMenuItem.setActionType(actionType);
-        if (actionMenuItem.getResId() == R.drawable.ic_more_black) {
+        if (actionMenuItem.getResId() == R.drawable.ic_more_white) {
             actionMenuItem.setTitle(getString(R.string.app_more));
         }
         for (int i = 0; i < mActionMenuItems.size(); i++) {

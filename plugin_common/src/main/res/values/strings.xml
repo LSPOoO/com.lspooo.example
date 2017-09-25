@@ -9,6 +9,10 @@
     <string name="app_back">返回</string>
     <string name="app_remind">提醒</string>
     <string name="app_revoke">撤回</string>
+    <string name="app_favorite">我的收藏</string>
+    <string name="app_emoj">表情</string>
+    <string name="app_shopping">购物</string>
+    <string name="app_setting">设置</string>
 
     <string name="common_enter_activity">当前所在页面,</string>
 </resources>

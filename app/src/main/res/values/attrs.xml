@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="launcher_tab_view">
+        <attr name="tabIconOn" format="reference"/>
+        <attr name="tabIconNormal" format="reference"/>
+        <attr name="tabTitle" format="string"/>
+        <attr name="tabChecked" format="boolean"/>
+        <attr name="tabUnReadCount" format="string"/>
+        <attr name="tabUnReadCountVisibility" format="boolean"/>
+        <attr name="tabUnReadDotVisibility" format="boolean"/>
+    </declare-styleable>
+
+</resources>

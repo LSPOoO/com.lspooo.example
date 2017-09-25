@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 import com.lspooo.example.plugin.common.R;
 import com.lspooo.example.plugin.common.tools.AnimatorUtils;
 import com.lspooo.example.plugin.common.tools.ECHandlerHelper;
-import com.lspooo.example.plugin.common.tools.MethodInvoke;
+import com.lspooo.example.plugin.common.common.swipe.MethodInvoke;
 import com.lspooo.example.plugin.common.tools.SDKVersionUtils;
 import com.lspooo.example.plugin.common.common.swipe.SwipeActivityManager;
 import com.lspooo.example.plugin.common.common.swipe.SwipeTranslucentMethodUtils;

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tabs="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootView"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.lspooo.example.view.LauncherBottomTabView
+        android:id="@+id/tab_communication"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tabs:tabIconOn="@drawable/tab_communication_icon_on"
+        tabs:tabIconNormal="@drawable/tab_communication_icon_normal"
+        tabs:tabTitle="@string/tab_communication_title"/>
+
+    <com.lspooo.example.view.LauncherBottomTabView
+        android:id="@+id/tab_contact"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tabs:tabIconOn="@drawable/tab_contact_icon_on"
+        tabs:tabIconNormal="@drawable/tab_contact_icon_normal"
+        tabs:tabTitle="@string/tab_contact_title"/>
+
+    <com.lspooo.example.view.LauncherBottomTabView
+        android:id="@+id/tab_find"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tabs:tabIconOn="@drawable/tab_communication_icon_on"
+        tabs:tabIconNormal="@drawable/tab_communication_icon_normal"
+        tabs:tabTitle="@string/tab_find_title"/>
+
+
+    <com.lspooo.example.view.LauncherBottomTabView
+        android:id="@+id/tab_setting"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tabs:tabIconOn="@drawable/tab_setting_icon_on"
+        tabs:tabIconNormal="@drawable/tab_setting_icon_normal"
+        tabs:tabTitle="@string/tab_setting_title"/>
+
+
+</LinearLayout>

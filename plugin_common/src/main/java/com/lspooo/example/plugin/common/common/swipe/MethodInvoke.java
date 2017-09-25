@@ -1,4 +1,4 @@
-package com.lspooo.example.plugin.common.tools;
+package com.lspooo.example.plugin.common.common.swipe;
 
 import android.app.Activity;
 import android.content.Context;
