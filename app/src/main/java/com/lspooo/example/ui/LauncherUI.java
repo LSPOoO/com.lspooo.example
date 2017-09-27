@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
 import com.lspooo.example.R;
+import com.lspooo.example.plugin.common.presenter.presenter.BasePresenter;
 import com.lspooo.example.plugin.common.ui.CommonActivity;
 import com.lspooo.example.plugin.common.view.CustomViewPager;
 import com.lspooo.example.view.LauncherBottomTabLayout;
@@ -81,5 +82,10 @@ public class LauncherUI extends CommonActivity {
     @Override
     public int getLayoutId() {
         return R.layout.activity_launcher;
+    }
+
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
     }
 }

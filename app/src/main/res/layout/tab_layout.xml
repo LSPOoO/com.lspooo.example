@@ -33,7 +33,6 @@
         tabs:tabIconNormal="@drawable/tab_communication_icon_normal"
         tabs:tabTitle="@string/tab_find_title"/>
 
-
     <com.lspooo.example.view.LauncherBottomTabView
         android:id="@+id/tab_setting"
         android:layout_width="0.0dip"
@@ -42,6 +41,5 @@
         tabs:tabIconOn="@drawable/tab_setting_icon_on"
         tabs:tabIconNormal="@drawable/tab_setting_icon_normal"
         tabs:tabTitle="@string/tab_setting_title"/>
-
 
 </LinearLayout>

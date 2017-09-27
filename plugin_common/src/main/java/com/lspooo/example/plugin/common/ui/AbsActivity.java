@@ -247,10 +247,33 @@ public abstract class AbsActivity extends AppCompatActivity implements SwipeActi
                 return result;
             }
         }
-
         return false;
     }
 
+    public void showPostingDialog() {
+    }
+
+    public void showPostingDialog(int tips) {
+    }
+
+    public void showPostingDialog(int tips, boolean canCancel) {
+    }
+
+    public void showPostingDialog(String tips, boolean canCancel) {
+    }
+
+    public void showPostingDialog(String tips) {
+    }
+
+    public void initDialog(int res) {
+    }
+
+    public void initDialog(String str) {
+    }
+
+    public void dismissDialog() {
+
+    }
 
     @Override
     protected void onDestroy() {
