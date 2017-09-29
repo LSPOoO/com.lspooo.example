@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.lspooo.example.R;
-import com.lspooo.example.plugin.common.presenter.presenter.BasePresenter;
-import com.lspooo.example.plugin.common.ui.CommonActivity;
+import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
+import com.lspooo.plugin.common.ui.CommonActivity;
 
 /**
  * Created by LSP on 2017/9/25.
  */
 
-public class SettingAccountInfoActivity extends CommonActivity{
+public class SettingAccountInfoActivity extends CommonActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

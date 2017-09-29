@@ -50,7 +50,7 @@
 
         <view
             android:id="@+id/search_view"
-            class="com.lspooo.example.plugin.common.common.menu.search.ActionBarSearchView$ActionBarEditText"
+            class="com.lspooo.plugin.common.common.menu.search.ActionBarSearchView$ActionBarEditText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

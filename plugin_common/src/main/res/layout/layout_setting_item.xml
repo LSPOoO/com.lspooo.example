@@ -65,7 +65,7 @@
                 android:layout_centerVertical="true"
                 android:visibility="visible"/>
 
-            <com.lspooo.example.plugin.common.view.SwitchButton
+            <com.lspooo.plugin.common.view.SwitchButton
                 android:id="@+id/setting_switch_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

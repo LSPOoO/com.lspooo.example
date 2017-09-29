@@ -4,16 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.lspooo.example.R;
-import com.lspooo.example.plugin.common.tools.BackwardSupportUtil;
-import com.lspooo.example.plugin.common.tools.ResourceHelper;
-import com.lspooo.example.plugin.common.ui.CommonActivity;
 
 public class LauncherBottomTabLayout extends LinearLayout {
 

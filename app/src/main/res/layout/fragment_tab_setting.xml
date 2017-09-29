@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.lspooo.example.plugin.common.view.SettingItemView
+    <com.lspooo.plugin.common.view.SettingItemView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         settings:icon="@drawable/ic_favorite"
@@ -13,7 +13,7 @@
         settings:showDivider="true"
         settings:accessoryType="arrow"/>
 
-    <com.lspooo.example.plugin.common.view.SettingItemView
+    <com.lspooo.plugin.common.view.SettingItemView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         settings:icon="@drawable/ic_emoj"
@@ -21,7 +21,7 @@
         settings:showDivider="true"
         settings:accessoryType="arrow"/>
 
-    <com.lspooo.example.plugin.common.view.SettingItemView
+    <com.lspooo.plugin.common.view.SettingItemView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         settings:icon="@drawable/ic_shopping"
@@ -29,7 +29,7 @@
         settings:showDivider="true"
         settings:accessoryType="arrow"/>
 
-    <com.lspooo.example.plugin.common.view.SettingItemView
+    <com.lspooo.plugin.common.view.SettingItemView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         settings:icon="@drawable/ic_setting"

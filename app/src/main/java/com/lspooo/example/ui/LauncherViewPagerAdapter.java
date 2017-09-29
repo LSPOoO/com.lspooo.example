@@ -3,11 +3,10 @@ package com.lspooo.example.ui;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.SparseArray;
 
-import com.lspooo.example.plugin.common.ui.BaseFragment;
 import com.lspooo.example.view.LauncherBottomTabView;
+import com.lspooo.plugin.common.ui.BaseFragment;
 
 /**
  * Created by LSP on 2017/9/24.

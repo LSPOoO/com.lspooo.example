@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="2.0dip">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/ytx_single_tab_root"
@@ -19,7 +18,7 @@
             <ImageView
                 android:id="@+id/tab_view_iv"
                 android:layout_width="32.0dip"
-                android:layout_height="28.0dip"
+                android:layout_height="24.0dip"
                 android:layout_centerInParent="true"
                 android:src="@drawable/tab_communication_icon_normal"/>
 

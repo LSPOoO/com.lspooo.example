@@ -4,7 +4,8 @@
     android:id="@+id/rootView"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/launcher_tab_bg">
 
     <com.lspooo.example.view.LauncherBottomTabView
         android:id="@+id/tab_communication"

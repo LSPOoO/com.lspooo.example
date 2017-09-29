@@ -5,11 +5,11 @@ import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
 import com.lspooo.example.R;
-import com.lspooo.example.plugin.common.presenter.presenter.BasePresenter;
-import com.lspooo.example.plugin.common.ui.CommonActivity;
-import com.lspooo.example.plugin.common.view.CustomViewPager;
 import com.lspooo.example.view.LauncherBottomTabLayout;
 import com.lspooo.example.view.LauncherBottomTabView;
+import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
+import com.lspooo.plugin.common.ui.CommonActivity;
+import com.lspooo.plugin.common.view.CustomViewPager;
 
 /**
  * Created by LSP on 2017/9/21.
