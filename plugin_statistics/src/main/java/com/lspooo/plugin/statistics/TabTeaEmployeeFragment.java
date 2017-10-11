@@ -1,18 +1,19 @@
-package com.lspooo.example.ui;
+package com.lspooo.plugin.statistics;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
 
-import com.lspooo.example.R;
 import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
 import com.lspooo.plugin.common.ui.TabFragment;
 
 /**
- * Created by LSP on 2017/9/24.
+ * Created by LSP on 2017/10/10.
  */
 
-public class TabSettingFragment extends TabFragment {
+public class TabTeaEmployeeFragment extends TabFragment{
+
+    private RecyclerView recyclerView;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class TabSettingFragment extends TabFragment {
     }
 
     private void initView() {
-        View viewById = findViewById(R.id.tab_setting);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     }
 
     @Override
@@ -41,6 +42,6 @@ public class TabSettingFragment extends TabFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab_setting;
+        return R.layout.fragment_tea_employee;
     }
 }

@@ -7,6 +7,10 @@ import android.util.SparseArray;
 
 import com.lspooo.example.view.LauncherBottomTabView;
 import com.lspooo.plugin.common.ui.BaseFragment;
+import com.lspooo.plugin.statistics.TabCommunicationFragment;
+import com.lspooo.plugin.statistics.TabFindFragment;
+import com.lspooo.plugin.statistics.TabSettingFragment;
+import com.lspooo.plugin.statistics.TabTeaEmployeeFragment;
 
 /**
  * Created by LSP on 2017/9/24.
@@ -46,7 +50,7 @@ public class LauncherViewPagerAdapter extends FragmentStatePagerAdapter{
                 mFragment = (BaseFragment) Fragment.instantiate(context, TabCommunicationFragment.class.getName(), null);
                 break;
             case LauncherBottomTabView.TAB_CONTACT:
-                mFragment = (BaseFragment) Fragment.instantiate(context, TabContactFragment.class.getName(), null);
+                mFragment = (BaseFragment) Fragment.instantiate(context, TabTeaEmployeeFragment.class.getName(), null);
                 break;
             case LauncherBottomTabView.TAB_FIND:
                 mFragment = (BaseFragment) Fragment.instantiate(context, TabFindFragment.class.getName(), null);

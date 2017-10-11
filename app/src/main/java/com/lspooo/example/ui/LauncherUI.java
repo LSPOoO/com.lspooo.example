@@ -37,7 +37,6 @@ public class LauncherUI extends CommonActivity {
     }
 
     private void initLauncherViewPager(){
-
         mViewPager = (CustomViewPager) findViewById(R.id.viewpager);
         if (mViewPager != null) {
             mViewPager.setOffscreenPageLimit(3);
@@ -53,6 +52,7 @@ public class LauncherUI extends CommonActivity {
 
     private ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
+
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
         }

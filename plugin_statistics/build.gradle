@@ -1,15 +1,16 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion parent.ext.compileSdkVersion
     buildToolsVersion parent.ext.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.lspooo.example"
         minSdkVersion parent.ext.minSdkVersion
         versionCode parent.ext.versionCode
         versionName parent.ext.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -17,24 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    lintOptions {
-        checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
-        abortOnError false
-    }
-
-    dexOptions {
-        dexInProcess true
-        preDexLibraries true
-        javaMaxHeapSize "4g"//越大越好
-        incremental true
-    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':plugin_common')
-    compile project(':plugin_statistics')
+    compile project(':plugin_dao')
 }

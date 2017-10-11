@@ -3,6 +3,8 @@ package com.lspooo.example;
 import android.app.Application;
 
 import com.lspooo.plugin.common.LSPApplicationContext;
+import com.lspooo.plugin.statistics.dao.StatisticsDao;
+import com.yuntongxun.plugin.greendao3.helper.DaoHelper;
 
 
 /**
@@ -15,5 +17,8 @@ public class LSPApplication extends Application{
     public void onCreate() {
         super.onCreate();
         LSPApplicationContext.setContext(this);
+
+        DaoHelper.initListener(new StatisticsDao());
+        DaoHelper.initDAO(this);
     }
 }
