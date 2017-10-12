@@ -2,6 +2,8 @@ package com.lspooo.plugin.statistics.dao;
 
 import com.lspooo.plugin.statistics.dao.bean.TeaEmployee;
 import com.lspooo.plugin.statistics.dao.bean.TeaEmployeeDao;
+import com.lspooo.plugin.statistics.dao.bean.TeaRecord;
+import com.lspooo.plugin.statistics.dao.bean.TeaRecordDao;
 import com.yuntongxun.plugin.greendao3.bean.DaoSession;
 import com.yuntongxun.plugin.greendao3.bean.ISession;
 
@@ -21,13 +23,16 @@ import java.util.Map;
 public class StatisticsSession implements ISession{
 
     private TeaEmployeeDao teaEmployeeDao;
+    private TeaRecordDao teaRecordDao;
 
     private DaoConfig teaEmployeeDaoConfig;
+    private DaoConfig teaRecordDaoConfig;
 
     @Override
     public List<Class> getEntityClass() {
         List<Class> list = new ArrayList<>();
         list.add(TeaEmployee.class);
+        list.add(TeaRecord.class);
         return list;
     }
 
@@ -35,6 +40,7 @@ public class StatisticsSession implements ISession{
     public List<AbstractDao> getSessionDao() {
         List<AbstractDao> list =new ArrayList<>();
         list.add(teaEmployeeDao);
+        list.add(teaRecordDao);
         return list;
     }
 
@@ -47,12 +53,17 @@ public class StatisticsSession implements ISession{
                 teaEmployeeDaoConfig = daoConfigMap.get(TeaEmployeeDao.class);
                 teaEmployeeDaoConfig.initIdentityScope(type);
 
+                teaRecordDaoConfig = daoConfigMap.get(TeaRecordDao.class);
+                teaRecordDaoConfig.initIdentityScope(type);
+
                 teaEmployeeDao = new TeaEmployeeDao(teaEmployeeDaoConfig, ad);
+                teaRecordDao = new TeaRecordDao(teaRecordDaoConfig, ad);
             }
 
             @Override
             public void setNClear() {
                 teaEmployeeDaoConfig.getIdentityScope().clear();
+                teaRecordDaoConfig.getIdentityScope().clear();
             }
         });
     }

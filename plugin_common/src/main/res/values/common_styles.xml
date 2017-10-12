@@ -31,7 +31,11 @@
     </style>
 
     <style name="BaseButtonStyle" parent="@android:style/Widget.Button" />
-    <style name="BaseEditTextStyle" parent="@android:style/Widget.EditText" />
+    <style name="BaseEditTextStyle" parent="@android:style/Widget.EditText" >
+        <item name="android:textSize">@dimen/NormalTextSize</item>
+        <item name="android:textColor">@color/base_text_light_color</item>
+        <item name="android:padding">@dimen/SmallPadding</item>
+    </style>
     <style name="BaseToggleButtonStyle" parent="@android:style/Widget.Button.Toggle" />
     <style name="BaseAutoCompleteTextViewStyle" parent="@android:style/Widget.AutoCompleteTextView" />
     <style name="BaseRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton" />

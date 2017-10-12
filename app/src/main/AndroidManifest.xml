@@ -12,7 +12,7 @@
         android:theme="@style/SwipeTheme">
 
         <activity
-            android:name=".ui.LauncherUI"
+            android:name=".ui.tea.TeaLauncherUI"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

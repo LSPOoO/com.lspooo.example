@@ -2,6 +2,7 @@ package com.lspooo.example.ui;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import com.lspooo.example.R;
@@ -20,6 +21,7 @@ public class LauncherUI extends CommonActivity {
     private CustomViewPager mViewPager;
     private LauncherViewPagerAdapter mAdapter;
     private LauncherBottomTabLayout launcherBottomTabLayout;
+    private PlusSubMenuHelper mPlusSubMenuHelper;
     private int currentTabIndex = LauncherBottomTabView.TAB_COMMUNICATION;
 
     @Override
@@ -30,6 +32,7 @@ public class LauncherUI extends CommonActivity {
         setActionMenuItem(0, R.drawable.ic_more_white, new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                controlPlusSubMenu();
                 return true;
             }
         });
@@ -48,6 +51,39 @@ public class LauncherUI extends CommonActivity {
         launcherBottomTabLayout = (LauncherBottomTabLayout) findViewById(R.id.launcherBottomTabView);
         launcherBottomTabLayout.setTabSelectedListener(tabSelectedListener);
         launcherBottomTabLayout.setTabSelected(LauncherBottomTabView.TAB_COMMUNICATION);
+    }
+
+    private void controlPlusSubMenu() {
+        if (mPlusSubMenuHelper == null) {
+            mPlusSubMenuHelper = new PlusSubMenuHelper(this);
+        }
+        if (mPlusSubMenuHelper.isShowing()) {
+            mPlusSubMenuHelper.dismiss();
+            return;
+        }
+        mPlusSubMenuHelper.setOnDismissListener(null);
+        mPlusSubMenuHelper.tryShow();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mPlusSubMenuHelper != null && mPlusSubMenuHelper.isShowing()) {
+            mPlusSubMenuHelper.dismiss();
+        }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if ((event.getKeyCode() == KeyEvent.KEYCODE_BACK)
+                && event.getAction() == KeyEvent.ACTION_UP) {
+            if (mPlusSubMenuHelper != null && mPlusSubMenuHelper.isShowing()) {
+                mPlusSubMenuHelper.dismiss();
+                return true;
+            }
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     private ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {

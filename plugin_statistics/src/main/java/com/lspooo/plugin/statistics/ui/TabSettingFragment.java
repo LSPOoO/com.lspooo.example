@@ -1,16 +1,18 @@
-package com.lspooo.plugin.statistics;
+package com.lspooo.plugin.statistics.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
 import com.lspooo.plugin.common.ui.TabFragment;
+import com.lspooo.plugin.statistics.R;
 
 /**
  * Created by LSP on 2017/9/24.
  */
 
-public class TabCommunicationFragment extends TabFragment {
+public class TabSettingFragment extends TabFragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -19,7 +21,6 @@ public class TabCommunicationFragment extends TabFragment {
     }
 
     private void initView() {
-
     }
 
     @Override
@@ -39,6 +40,6 @@ public class TabCommunicationFragment extends TabFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab_communication;
+        return R.layout.fragment_tab_setting;
     }
 }

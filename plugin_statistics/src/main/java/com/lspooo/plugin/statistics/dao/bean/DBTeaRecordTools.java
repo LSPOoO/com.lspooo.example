@@ -12,16 +12,16 @@ import java.util.List;
  * Created by LSP on 2017/10/10.
  */
 
-public class DBTeaEmployeeTools extends DaoHelper<TeaEmployee>{
+public class DBTeaRecordTools extends DaoHelper<TeaRecord>{
 
-    private static DBTeaEmployeeTools mInstance;
+    private static DBTeaRecordTools mInstance;
 
-    private DBTeaEmployeeTools() {}
+    private DBTeaRecordTools() {}
 
-    public static DBTeaEmployeeTools getInstance() {
+    public static DBTeaRecordTools getInstance() {
         if (mInstance == null) {
-            synchronized (DBTeaEmployeeTools.class) {
-                mInstance = new DBTeaEmployeeTools();
+            synchronized (DBTeaRecordTools.class) {
+                mInstance = new DBTeaRecordTools();
             }
         }
         return mInstance;
@@ -29,7 +29,7 @@ public class DBTeaEmployeeTools extends DaoHelper<TeaEmployee>{
 
     @Override
     protected AbstractDao initDao() {
-        return DaoMasterHelper.getInstance().getDao(TeaEmployee.class);
+        return DaoMasterHelper.getInstance().getDao(TeaRecord.class);
     }
 
     @Override
@@ -37,16 +37,22 @@ public class DBTeaEmployeeTools extends DaoHelper<TeaEmployee>{
         mInstance = null;
     }
 
-    public TeaEmployee queryTeaEmployee(long id){
+    public List<TeaRecord> queryTeaRecord(long id){
         if (dao == null) {
             return null;
         }
-        WhereCondition where = TeaEmployeeDao.Properties.Id.eq(id);
-        List<TeaEmployee> list = dao.queryBuilder().where(where).list();
+        WhereCondition where = TeaRecordDao.Properties.EmployeeId.eq(id);
+        List<TeaRecord> list = dao.queryBuilder().where(where).list();
         if (list != null && list.size() > 0) {
-            TeaEmployee employee = list.get(0);
-            return employee;
+            return list;
         }
         return null;
     }
+
+    public void queryTeaRecord(String id, String startTime, String endTime){
+
+
+        String sql = "";
+    }
+
 }

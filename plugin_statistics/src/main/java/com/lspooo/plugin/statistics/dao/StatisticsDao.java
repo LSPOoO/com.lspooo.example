@@ -1,6 +1,7 @@
 package com.lspooo.plugin.statistics.dao;
 
 import com.lspooo.plugin.statistics.dao.bean.TeaEmployeeDao;
+import com.lspooo.plugin.statistics.dao.bean.TeaRecordDao;
 import com.yuntongxun.plugin.greendao3.bean.IDao;
 import com.yuntongxun.plugin.greendao3.bean.ISession;
 
@@ -18,11 +19,13 @@ public class StatisticsDao implements IDao{
     @Override
     public void onCreate(Database db, boolean ifNotExists) {
         TeaEmployeeDao.createTable(db, ifNotExists);
+        TeaRecordDao.createTable(db, ifNotExists);
     }
 
     @Override
     public void onDropTable(Database db, boolean ifExists) {
         TeaEmployeeDao.dropTable(db, ifExists);
+        TeaRecordDao.dropTable(db, ifExists);
     }
 
     @Override
@@ -34,6 +37,7 @@ public class StatisticsDao implements IDao{
     public List<Class<? extends AbstractDao<?, ?>>> getAbsDao() {
         List<Class<? extends AbstractDao<?, ?>>> list = new ArrayList<>();
         list.add(TeaEmployeeDao.class);
+        list.add(TeaRecordDao.class);
         return list;
     }
 

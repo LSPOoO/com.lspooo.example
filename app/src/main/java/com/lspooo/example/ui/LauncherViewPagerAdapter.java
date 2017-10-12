@@ -7,10 +7,10 @@ import android.util.SparseArray;
 
 import com.lspooo.example.view.LauncherBottomTabView;
 import com.lspooo.plugin.common.ui.BaseFragment;
-import com.lspooo.plugin.statistics.TabCommunicationFragment;
-import com.lspooo.plugin.statistics.TabFindFragment;
-import com.lspooo.plugin.statistics.TabSettingFragment;
-import com.lspooo.plugin.statistics.TabTeaEmployeeFragment;
+import com.lspooo.plugin.statistics.ui.TabCommunicationFragment;
+import com.lspooo.plugin.statistics.ui.TabFindFragment;
+import com.lspooo.plugin.statistics.ui.TabSettingFragment;
+import com.lspooo.plugin.statistics.ui.TabTeaEmployeeFragment;
 
 /**
  * Created by LSP on 2017/9/24.

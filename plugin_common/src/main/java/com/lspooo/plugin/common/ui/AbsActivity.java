@@ -233,7 +233,7 @@ public abstract class AbsActivity extends AppCompatActivity implements SwipeActi
     /**
      * 隐藏键盘
      */
-    boolean hideSoftKeyboard() {
+    protected boolean hideSoftKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
             View localView = getCurrentFocus();

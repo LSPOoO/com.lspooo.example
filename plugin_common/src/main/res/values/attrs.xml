@@ -36,4 +36,8 @@
         <attr name="kswTextMarginH" format="dimension"/>
         <attr name="kswAutoAdjustTextPosition" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="PickerView">
+        <attr name="isLoop" format="boolean" />
+    </declare-styleable>
 </resources>

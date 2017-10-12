@@ -20,11 +20,7 @@ public class TeaEmployeeDao extends AbstractDao<TeaEmployee, Long>{
 
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Mobile = new Property(1, String.class, "mobile", false, "MOBILE");
-        public final static Property Name = new Property(2, String.class, "name", false, "NAME");
-        public final static Property Gender = new Property(3, Integer.class, "gender", false, "GENDER");
-        public final static Property StartTime = new Property(4, String.class, "startTime", false, "START_TIME");
-        public final static Property EndTime = new Property(5, String.class, "endTime", false, "END_TIME");
+        public final static Property Name = new Property(1, String.class, "name", false, "NAME");
     }
 
     public TeaEmployeeDao(DaoConfig config) {
@@ -39,12 +35,8 @@ public class TeaEmployeeDao extends AbstractDao<TeaEmployee, Long>{
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"TEA_EMPLOYEE\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY NOT NULL ," + // 0: _id
-                "\"MOBILE\" TEXT," + // 1: mobile
-                "\"NAME\" TEXT," + // 2: name
-                "\"GENDER\" INTEGER," + // 3: gender
-                "\"START_TIME\" TEXT," + // 4: startTime
-                "\"END_TIME\" TEXT);"); // 5: endTime
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT," + // 0: _id
+                "\"NAME\" TEXT);"); // 2: name
     }
 
     /** Drops the underlying database table. */
@@ -56,11 +48,7 @@ public class TeaEmployeeDao extends AbstractDao<TeaEmployee, Long>{
     @Override
     protected TeaEmployee readEntity(Cursor cursor, int offset) {
         TeaEmployee employee = new TeaEmployee(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0),
-                cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1),
-                cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2),
-                cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3),
-                cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4),
-                cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+                cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         return employee;
     }
 
@@ -72,11 +60,7 @@ public class TeaEmployeeDao extends AbstractDao<TeaEmployee, Long>{
     @Override
     protected void readEntity(Cursor cursor, TeaEmployee entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setMobile(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setGender(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
-        entity.setStartTime(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setEndTime(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
     }
 
     @Override
@@ -88,29 +72,9 @@ public class TeaEmployeeDao extends AbstractDao<TeaEmployee, Long>{
             stmt.bindLong(1, id);
         }
 
-        String mobile = entity.getMobile();
-        if (mobile != null){
-            stmt.bindString(2, mobile);
-        }
-
         String name = entity.getName();
         if (name != null){
-            stmt.bindString(3, name);
-        }
-
-        Integer gender = entity.getGender();
-        if (gender != null){
-            stmt.bindLong(4, gender);
-        }
-
-        String startTime = entity.getStartTime();
-        if (startTime != null){
-            stmt.bindString(5, startTime);
-        }
-
-        String endTime = entity.getEndTime();
-        if (endTime != null){
-            stmt.bindString(6, endTime);
+            stmt.bindString(2, name);
         }
     }
 
@@ -123,29 +87,9 @@ public class TeaEmployeeDao extends AbstractDao<TeaEmployee, Long>{
             stmt.bindLong(1, id);
         }
 
-        String mobile = entity.getMobile();
-        if (mobile != null){
-            stmt.bindString(2, mobile);
-        }
-
         String name = entity.getName();
         if (name != null){
-            stmt.bindString(3, name);
-        }
-
-        Integer gender = entity.getGender();
-        if (gender != null){
-            stmt.bindLong(4, gender);
-        }
-
-        String startTime = entity.getStartTime();
-        if (startTime != null){
-            stmt.bindString(5, startTime);
-        }
-
-        String endTime = entity.getEndTime();
-        if (endTime != null){
-            stmt.bindString(6, endTime);
+            stmt.bindString(2, name);
         }
     }
 

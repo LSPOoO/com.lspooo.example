@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Plugin_Statistics</string>
+
+    <string name="add_tea_employee">新增采茶工</string>
+    <string name="del_tea_employee">删除采茶工</string>
+    <string name="add_tea_record">添加采茶记录</string>
 </resources>
