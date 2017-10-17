@@ -99,9 +99,10 @@ public class TimeSelector {
         startCalendar = Calendar.getInstance();
         endCalendar = Calendar.getInstance();
         currentCalendar = Calendar.getInstance();
+
         startCalendar.setTime(parse(startDate, FORMAT_STR));
         endCalendar.setTime(parse(endDate, FORMAT_STR));
-        endCalendar.setTime(new Date());
+        currentCalendar.setTime(new Date());
         initDialog();
         initView();
     }

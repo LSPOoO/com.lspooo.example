@@ -4,4 +4,5 @@
     <string name="add_tea_employee">新增采茶工</string>
     <string name="del_tea_employee">删除采茶工</string>
     <string name="add_tea_record">添加采茶记录</string>
+    <string name="tea_statistics">采茶统计</string>
 </resources>

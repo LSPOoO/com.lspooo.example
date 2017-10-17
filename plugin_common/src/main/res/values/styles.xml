@@ -158,4 +158,22 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@color/white</item>
     </style>
+
+
+    <style name="AlertDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="DialogWithoutShadowBgStyle">
+        <item name="android:background">@drawable/dialog_background</item>
+        <item name="android:layout_marginLeft">@dimen/DialogPadding</item>
+        <item name="android:layout_marginRight">@dimen/DialogPadding</item>
+    </style>
 </resources>

@@ -36,9 +36,16 @@
     <dimen name="SmallButtonHeight">32.0dip</dimen>
 
     <dimen name="MiniMenuIconSize">32.0dip</dimen>
+    <dimen name="MiniAvatarSize">32.0dip</dimen>
     <dimen name="MinMenuWidth">180.0dip</dimen>
     <dimen name="MinSubMenuWidth">140.0dip</dimen>
     <dimen name="MinSubMenuHeight">48.0dip</dimen>
+
+    <dimen name="MinDialogWidth">320.0dip</dimen>
+    <dimen name="MinDialogTitleHeight">64.0dip</dimen>
+    <dimen name="DialogTitleTextSize">20.0dip</dimen>
+    <dimen name="DialogPadding">40.0dip</dimen>
+    <dimen name="LittleDialogPadding">20.0dip</dimen>
 
     <dimen name="ksw_md_thumb_ripple_size">42.0dp</dimen>
     <dimen name="ksw_md_thumb_solid_inset">11dp</dimen>

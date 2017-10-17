@@ -11,6 +11,9 @@ public class TeaRecord {
     private Float weight;
     private String time;
 
+    public TeaRecord() {
+    }
+
     public TeaRecord(Long id, Long employeeId, Float weight, String time) {
         this.id = id;
         this.employeeId = employeeId;
@@ -58,5 +61,16 @@ public class TeaRecord {
                 ", weight=" + weight +
                 ", time='" + time + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){
+            return false;
+        }
+        if (obj instanceof TeaRecord && ((TeaRecord) obj).getId() == this.getId()){
+            return true;
+        }
+        return false;
     }
 }

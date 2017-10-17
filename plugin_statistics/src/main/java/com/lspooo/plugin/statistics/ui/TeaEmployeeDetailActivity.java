@@ -1,15 +1,20 @@
 package com.lspooo.plugin.statistics.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 
+import com.lspooo.plugin.common.common.BroadcastIntent;
+import com.lspooo.plugin.common.common.adapter.BaseQuickAdapter;
 import com.lspooo.plugin.common.common.menu.ActionMenu;
 import com.lspooo.plugin.common.common.menu.OverflowSubMenuHelper;
+import com.lspooo.plugin.common.common.menu.RXContentMenuHelper;
 import com.lspooo.plugin.common.common.toast.ToastUtil;
 import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
 import com.lspooo.plugin.common.ui.CommonActivity;
@@ -36,7 +41,7 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
     private TeaEmployee employee;
     private OverflowSubMenuHelper mOverflowHelper;
     private List<TeaRecord> recordList = new ArrayList<>();
-
+    private RXContentMenuHelper mMenuHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +78,26 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
 
         mAdapter = new TeaRecordListAdapter(R.layout.layout_tea_record_item, recordList);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+
+            }
+        });
+        mAdapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
+                TeaRecord record = recordList.get(position);
+                if (position >= recordList.size()){
+                    return true;
+                }
+                if (record == null){
+                    return true;
+                }
+                showMenu(record);
+                return true;
+            }
+        });
     }
 
     private void initOverflowSubMenuAction() {
@@ -111,6 +136,46 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
             mAdapter.notifyDataSetChanged();
         } else{
             mAdapter.setEmptyView(R.layout.layout_empty_tea_record, (ViewGroup) mRecyclerView.getParent());
+        }
+    }
+
+    private void showMenu(final TeaRecord record){
+        if (mMenuHelper == null){
+            mMenuHelper = new RXContentMenuHelper(this);
+        }
+        mMenuHelper.setOnCreateActionMenuListener(new ActionMenu.OnCreateActionMenuListener() {
+            @Override
+            public void OnCreateActionMenu(ActionMenu menu) {
+                menu.add(1 , R.string.app_del);
+            }
+        });
+        mMenuHelper.setOnActionMenuItemSelectedListener(new ActionMenu.OnActionMenuItemSelectedListener() {
+            @Override
+            public void OnActionMenuSelected(MenuItem menu, int position) {
+                switch (menu.getItemId()){
+                    case 1:
+                        recordList.remove(record);
+                        mAdapter.notifyDataSetChanged();
+                        DBTeaRecordTools.getInstance().delete(record);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        mMenuHelper.show();
+    }
+
+    @Override
+    protected String[] getReceiverAction() {
+        return new String[]{BroadcastIntent.ACTION_SYNC_TEA_RECORD};
+    }
+
+    @Override
+    protected void onHandleReceiver(Context context, Intent intent) {
+        super.onHandleReceiver(context, intent);
+        if (BroadcastIntent.ACTION_SYNC_TEA_RECORD.equals(intent.getAction())){
+            loadTeaRecord();
         }
     }
 

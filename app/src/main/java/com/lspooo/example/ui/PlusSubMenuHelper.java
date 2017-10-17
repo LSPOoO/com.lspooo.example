@@ -9,6 +9,7 @@ import com.lspooo.plugin.common.common.menu.AbsSubMenuHelper;
 import com.lspooo.plugin.common.common.menu.SubMenu;
 import com.lspooo.plugin.common.ui.AbsActivity;
 import com.lspooo.plugin.statistics.ui.AddEmployeeActivity;
+import com.lspooo.plugin.statistics.ui.StatisticsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +36,11 @@ public class PlusSubMenuHelper extends AbsSubMenuHelper {
     private void init() {
 
         title.add(R.string.add_tea_employee);
+        title.add(R.string.tea_statistics);
+        icon.add(R.drawable.ic_account);
         icon.add(R.drawable.ic_account);
         menuId.add(1);
+        menuId.add(2);
 
     }
 
@@ -54,12 +58,16 @@ public class PlusSubMenuHelper extends AbsSubMenuHelper {
     @Override
     public void onMenuClick(final Context context, SubMenu menu) {
         switch (menu.getMenuId()) {
-            case 1:
+            case 1:{
                 Intent intent = new Intent(context, AddEmployeeActivity.class);
                 context.startActivity(intent);
-                break;
-            case 2:
-                break;
+            }
+            break;
+            case 2: {
+                Intent intent = new Intent(context, StatisticsActivity.class);
+                context.startActivity(intent);
+            }
+            break;
             case 3:
                 break;
             case 4:

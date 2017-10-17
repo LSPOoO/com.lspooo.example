@@ -7,4 +7,5 @@ package com.lspooo.plugin.common.common;
 public class BroadcastIntent {
 
     public final static String ACTION_SYNC_TEA_EMPLOYEE = "com.lspooo.ACTION_SYNC_TEA_EMPLOYEE";
+    public final static String ACTION_SYNC_TEA_RECORD = "com.lspooo.ACTION_SYNC_TEA_RECORD";
 }
