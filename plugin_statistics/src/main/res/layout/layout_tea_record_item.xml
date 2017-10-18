@@ -12,6 +12,14 @@
         android:padding="@dimen/LargePadding">
 
         <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/base_text_dark_color"
+            android:textSize="@dimen/NormalTextSize"
+            android:layout_marginRight="@dimen/SmallPadding"/>
+
+        <TextView
             android:id="@+id/weightTv"
             android:layout_width="0.0dip"
             android:layout_height="wrap_content"

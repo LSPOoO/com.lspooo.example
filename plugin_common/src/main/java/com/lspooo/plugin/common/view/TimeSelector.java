@@ -91,6 +91,7 @@ public class TimeSelector {
     private TextView tv_select, tv_title;
     private TextView hour_text;
     private TextView minute_text;
+    private MODE mode;
 
 
     public TimeSelector(Context context, ResultHandler resultHandler, String startDate, String endDate) {
@@ -197,6 +198,11 @@ public class TimeSelector {
         spanMin = (!spanHour) && (startMininute != endMininute);
 
         selectedCalender.setTime(currentCalendar.getTime());
+        if (mode == MODE.YMD){
+            selectedCalender.set(Calendar.HOUR_OF_DAY, 0);
+            selectedCalender.set(Calendar.MINUTE, 0);
+            selectedCalender.set(Calendar.SECOND, 0);
+        }
     }
 
     private void initTimer() {
@@ -667,6 +673,7 @@ public class TimeSelector {
     }
 
     public void setMode(MODE mode) {
+        this.mode = mode;
         switch (mode.value) {
             case 1:
                 disScrollUnit(SCROLLTYPE.HOUR, SCROLLTYPE.MINUTE);
@@ -674,6 +681,7 @@ public class TimeSelector {
                 minute_pv.setVisibility(View.GONE);
                 hour_text.setVisibility(View.GONE);
                 minute_text.setVisibility(View.GONE);
+
                 break;
             case 2:
                 disScrollUnit();

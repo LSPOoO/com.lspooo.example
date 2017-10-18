@@ -11,6 +11,8 @@ public class TeaRecord {
     private Float weight;
     private String time;
 
+    private String name;
+
     public TeaRecord() {
     }
 
@@ -51,6 +53,14 @@ public class TeaRecord {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

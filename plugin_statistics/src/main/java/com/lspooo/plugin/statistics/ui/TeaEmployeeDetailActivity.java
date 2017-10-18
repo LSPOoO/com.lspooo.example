@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.lspooo.plugin.common.common.BroadcastIntent;
 import com.lspooo.plugin.common.common.adapter.BaseQuickAdapter;
@@ -17,6 +18,8 @@ import com.lspooo.plugin.common.common.menu.OverflowSubMenuHelper;
 import com.lspooo.plugin.common.common.menu.RXContentMenuHelper;
 import com.lspooo.plugin.common.common.toast.ToastUtil;
 import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
+import com.lspooo.plugin.common.tools.DateStyle;
+import com.lspooo.plugin.common.tools.DateUtil;
 import com.lspooo.plugin.common.ui.CommonActivity;
 import com.lspooo.plugin.statistics.R;
 import com.lspooo.plugin.statistics.dao.bean.DBTeaEmployeeTools;
@@ -26,6 +29,7 @@ import com.lspooo.plugin.statistics.dao.bean.TeaRecord;
 import com.lspooo.plugin.statistics.ui.adapter.TeaRecordListAdapter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,14 +38,20 @@ import java.util.List;
 
 public class TeaEmployeeDetailActivity extends CommonActivity{
 
-
     private RecyclerView mRecyclerView;
     private TeaRecordListAdapter mAdapter;
+    private View statisticsLayout;
+    private TextView filterBtn;
+    private TextView startTimeTv;
+    private TextView endTimeTv;
+    private TextView totalCountTv;
+    private TextView totalWeightTv;
 
     private TeaEmployee employee;
     private OverflowSubMenuHelper mOverflowHelper;
-    private List<TeaRecord> recordList = new ArrayList<>();
     private RXContentMenuHelper mMenuHelper;
+
+    private List<TeaRecord> recordList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,7 +69,7 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
             return;
         }
         initView();
-        loadTeaRecord();
+        loadTeaRecord(0, 0);
     }
 
     private void initView() {
@@ -72,11 +82,41 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
             }
         });
 
+        statisticsLayout = findViewById(R.id.statisticsLayout);
+        filterBtn = (TextView) findViewById(R.id.filterBtn);
+        filterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (recordList.size() <= 0){
+                    return;
+                }
+                Intent intent = new Intent(TeaEmployeeDetailActivity.this, DateFilterSelectActivity.class);
+                intent.putExtra("startDate", Long.parseLong(recordList.get(0).getTime()));
+                intent.putExtra("endDate", Long.parseLong(recordList.get(recordList.size() - 1).getTime()));
+                startActivityForResult(intent, 0x1);
+
+//                ECAlertDialog dialog = ECAlertDialog.buildAlert(TeaEmployeeDetailActivity.this, "哈哈哈哈", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//                dialog.setTitle("提示");
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+//                dialog.setCancelable(false);
+//                dialog.show();
+            }
+        });
+        startTimeTv = (TextView) findViewById(R.id.startTimeTv);
+        endTimeTv = (TextView) findViewById(R.id.endTimeTv);
+        totalCountTv = (TextView) findViewById(R.id.totalCountTv);
+        totalWeightTv = (TextView) findViewById(R.id.totalWeightTv);
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mAdapter = new TeaRecordListAdapter(R.layout.layout_tea_record_item, recordList);
+        mAdapter = new TeaRecordListAdapter(R.layout.layout_tea_record_item, recordList, false);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -128,14 +168,29 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
         mOverflowHelper.tryShow();
     }
 
-    private void loadTeaRecord(){
+    private void loadTeaRecord(long start, long end){
         recordList.clear();
-        List<TeaRecord> result = DBTeaRecordTools.getInstance().queryTeaRecord(employee.getId());
+        List<TeaRecord> result;
+        if (start > 0 && end > 0){
+            result = DBTeaRecordTools.getInstance().queryTeaRecord(employee.getId(), start + "", end + "");
+        } else{
+            result = DBTeaRecordTools.getInstance().queryTeaRecord(employee.getId());
+        }
         if (result != null && result.size() > 0){
             recordList.addAll(result);
             mAdapter.notifyDataSetChanged();
+            statisticsLayout.setVisibility(View.VISIBLE);
+            startTimeTv.setText(DateUtil.DateToString(new Date(start > 0 ? start : Long.parseLong(recordList.get(0).getTime())), DateStyle.YYYY_MM_DD));
+            endTimeTv.setText(DateUtil.DateToString(new Date(end > 0 ? end : Long.parseLong(recordList.get(recordList.size() - 1).getTime())), DateStyle.YYYY_MM_DD));
+            totalCountTv.setText("采茶次数：" + recordList.size() + "次");
+            float sum = 0;
+            for (TeaRecord record : recordList){
+                sum += record.getWeight();
+            }
+            totalWeightTv.setText("采茶重量总计：" + sum + "Kg");
         } else{
             mAdapter.setEmptyView(R.layout.layout_empty_tea_record, (ViewGroup) mRecyclerView.getParent());
+            statisticsLayout.setVisibility(View.GONE);
         }
     }
 
@@ -167,6 +222,19 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0x1){
+            if (resultCode != RESULT_OK || data == null){
+                return;
+            }
+            long startDate = data.getLongExtra("startDate", -1);
+            long endDate = data.getLongExtra("endDate", -1);
+            loadTeaRecord(startDate, endDate);
+        }
+    }
+
+    @Override
     protected String[] getReceiverAction() {
         return new String[]{BroadcastIntent.ACTION_SYNC_TEA_RECORD};
     }
@@ -175,7 +243,7 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
     protected void onHandleReceiver(Context context, Intent intent) {
         super.onHandleReceiver(context, intent);
         if (BroadcastIntent.ACTION_SYNC_TEA_RECORD.equals(intent.getAction())){
-            loadTeaRecord();
+            loadTeaRecord(0, 0);
         }
     }
 

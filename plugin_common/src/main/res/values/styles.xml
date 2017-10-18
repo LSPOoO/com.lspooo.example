@@ -171,6 +171,7 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+
     <style name="DialogWithoutShadowBgStyle">
         <item name="android:background">@drawable/dialog_background</item>
         <item name="android:layout_marginLeft">@dimen/DialogPadding</item>

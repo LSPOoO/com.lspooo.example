@@ -2,6 +2,7 @@ package com.lspooo.plugin.statistics.ui.adapter;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.TextView;
 
 import com.lspooo.plugin.common.common.adapter.BaseQuickAdapter;
@@ -20,17 +21,27 @@ import java.util.List;
 
 public class TeaRecordListAdapter extends BaseQuickAdapter<TeaRecord, BaseViewHolder>{
 
-    public TeaRecordListAdapter(@LayoutRes int layoutResId, @Nullable List<TeaRecord> data) {
+    private boolean showName;
+
+    public TeaRecordListAdapter(@LayoutRes int layoutResId, @Nullable List<TeaRecord> data, boolean showName) {
         super(layoutResId, data);
+        this.showName = showName;
     }
 
     @Override
     protected void convert(BaseViewHolder helper, TeaRecord item) {
         TextView weightTv = helper.getView(R.id.weightTv);
         TextView timeTv = helper.getView(R.id.timeTv);
+        TextView nameTv = helper.getView(R.id.nameTv);
         if (item != null){
             weightTv.setText("重量：" + item.getWeight() + "公斤");
-            timeTv.setText(DateUtil.DateToString(new Date(Long.parseLong(item.getTime())), DateStyle.YYYY_MM_DD_HH_MM));
+            timeTv.setText(DateUtil.DateToString(new Date(Long.parseLong(item.getTime())), DateStyle.YYYY_MM_DD));
+            if (showName){
+                nameTv.setText(item.getName());
+                nameTv.setVisibility(View.VISIBLE);
+            } else{
+                nameTv.setVisibility(View.GONE);
+            }
         }
     }
 }

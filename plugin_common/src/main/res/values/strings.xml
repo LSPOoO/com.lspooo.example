@@ -18,6 +18,9 @@
 
     <string name="common_enter_activity">当前所在页面,</string>
 
+    <string name="app_dialog_confirm">确定</string>
+    <string name="app_dialog_cancel">取消</string>
+    <string name="app_dialog_title">提示</string>
 
     <string name="loading">Loading...</string>
     <string name="load_failed">load more failed</string>

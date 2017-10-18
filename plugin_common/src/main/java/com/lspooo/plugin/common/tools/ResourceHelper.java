@@ -21,10 +21,6 @@ import android.util.SparseIntArray;
 import com.lspooo.plugin.common.LSPApplicationContext;
 
 
-/**
- * 资源文件帮助类
- * @author 容联•云通讯
- */
 public class ResourceHelper {
 
     private static final String TAG = "RongXin.ResourceHelper";
