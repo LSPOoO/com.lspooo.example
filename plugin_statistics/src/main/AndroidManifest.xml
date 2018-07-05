@@ -20,7 +20,7 @@
             android:exported="false"/>
 
         <activity
-            android:name=".ui.AddTeaRecordActivity"
+            android:name=".ui.InputTeaRecordActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
@@ -28,6 +28,27 @@
 
         <activity
             android:name=".ui.StatisticsActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.StatisticsDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.TeaDateActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.TeaDateDetailActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"

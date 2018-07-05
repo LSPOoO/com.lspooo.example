@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Plugin_Common</string>
+    <string name="app_name">LSPOoO</string>
 
     <string name="app_send">发送</string>
     <string name="app_search">搜索</string>
@@ -15,6 +15,10 @@
     <string name="app_setting">设置</string>
     <string name="app_new">NEW</string>
     <string name="app_del">删除</string>
+    <string name="app_modify">修改</string>
+    <string name="app_ok">确定</string>
+    <string name="app_cancel">取消</string>
+    <string name="app_tip">提示</string>
 
     <string name="common_enter_activity">当前所在页面,</string>
 
@@ -25,4 +29,30 @@
     <string name="loading">Loading...</string>
     <string name="load_failed">load more failed</string>
     <string name="load_end">No more data</string>
+
+
+
+
+    <!--权限-->
+    <string name="set">去设置</string>
+    <string name="rationaleCameraExternal">需要访问存储设置、相机、麦克风的权限</string>
+    <string name="rationale">需要访问存储设置、相机、麦克风、读取通讯录的权限</string>
+    <string name="rationaleJoin">需要访问存储设置、相机、麦克风的权限</string>
+    <string name="rationaleLocation">需要访问定位的权限</string>
+    <string name="rationaleSDCard">需要访问存储的权限</string>
+    <string name="rationalePhoneState">需要访问电话权限</string>
+    <string name="rationaleVoiceExternal">需要访问录音和存储的权限</string>
+    <string name="rationaleVoice">需要访问麦克风的权限</string>
+    <string name="rationaleCamera">需要访问摄像头权限</string>
+    <string name="goSettingsRationaleSDCard">需要访问存储设备的权限，但此权限已被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleCamera">需要访问存摄像头权限，但此权限已被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleVoice">需要访问麦克风录音，但此权限或被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleCameraExternal">需要访问存储设备、相机、麦克风的权限，但此权限已被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleVoiceExternal">需要访问录音和存储的权限，但两者权限或被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleInit">需要访问存储设备、相机、麦克风、读取通讯录的权限，但某项权限已被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleJoin">需要访问存储设备、相机、麦克风的权限，但某项权限已被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleLocation">需要定位的权限,但此权限已被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleContacts">需要读取通讯录的权限,但此权限已被禁止，你可以到设置中更改</string>
+    <string name="goSettingsRationaleReadPhoneState">需要读取通讯录的权限,但此权限已被禁止，你可以到设置中更改</string>
+    <string name="rationaleReadContacts">需要读取通讯录的权限</string>
 </resources>

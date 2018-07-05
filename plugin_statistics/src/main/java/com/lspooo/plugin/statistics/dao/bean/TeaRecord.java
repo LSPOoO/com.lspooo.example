@@ -1,10 +1,13 @@
 package com.lspooo.plugin.statistics.dao.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by LSP on 2017/10/12.
  */
 
-public class TeaRecord {
+public class TeaRecord implements Parcelable{
 
     private Long id;
     private Long employeeId;
@@ -22,6 +25,38 @@ public class TeaRecord {
         this.weight = weight;
         this.time = time;
     }
+
+    protected TeaRecord(Parcel in) {
+        id = in.readLong();
+        employeeId = in.readLong();
+        weight = in.readFloat();
+        time = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeLong(employeeId);
+        dest.writeFloat(weight);
+        dest.writeString(time);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<TeaRecord> CREATOR = new Creator<TeaRecord>() {
+        @Override
+        public TeaRecord createFromParcel(Parcel in) {
+            return new TeaRecord(in);
+        }
+
+        @Override
+        public TeaRecord[] newArray(int size) {
+            return new TeaRecord[size];
+        }
+    };
 
     public Long getId() {
         return id;

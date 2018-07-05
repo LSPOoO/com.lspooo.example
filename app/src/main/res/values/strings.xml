@@ -1,11 +1,14 @@
 <resources>
-    <string name="app_name">LSPOoO</string>
-
-
     <string name="tab_communication_title">消息</string>
     <string name="tab_contact_title">通讯录</string>
     <string name="tab_find_title">发现</string>
     <string name="tab_setting_title">我的</string>
 
+    <string name="menu_launcher_action_share_example">Share Example</string>
+    <string name="menu_launcher_action_Setting">Setting</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>

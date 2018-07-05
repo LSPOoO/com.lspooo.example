@@ -1,0 +1,9 @@
+<resources>
+    <string name="camera_permission_title">Camera</string>
+    <string name="camera_permission_tips">允许访问即可拍摄照片和视频</string>
+    <string name="open_camera_permission">启用相机访问权限</string>
+    <string name="camera_permission_opened">相机访问权限已启用</string>
+    <string name="open_microphone_permission">启用麦克风访问权限</string>
+    <string name="microphone_permission_opened">麦克风访问权限已启用</string>
+
+</resources>

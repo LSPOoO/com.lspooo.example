@@ -20,7 +20,6 @@
             android:id="@+id/icon"
             android:layout_width="@dimen/MiniMenuIconSize"
             android:layout_height="@dimen/MiniMenuIconSize"
-            android:paddingRight="@dimen/SmallPadding"
             android:layout_marginLeft="@dimen/SmallPadding"
             android:scaleType="centerInside"
             android:duplicateParentState="true"/>
@@ -30,7 +29,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceSmallPopupMenu"
-            android:textSize="@dimen/BasicTextSize" />
+            android:textSize="@dimen/BasicTextSize"
+            android:layout_marginLeft="@dimen/SmallPadding"/>
 
         <TextView
             android:id="@+id/new_tips"

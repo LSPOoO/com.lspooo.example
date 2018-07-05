@@ -33,6 +33,12 @@
         <item name="popupMenuStyle">@style/PopupMenuStyle</item>
     </style>
 
+    <style name="Launcher_Theme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorControlNormal">@color/action_bar_text_color</item>
+    </style>
+
     <style name="SlideAnimationStyle" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
@@ -91,11 +97,11 @@
     </style>
 
     <style name="SmallButtonStyle">
-        <item name="android:textSize">@dimen/SmallTextSize</item>
+        <item name="android:textSize">@dimen/SmallerTextSize</item>
         <item name="android:textColor">@color/white_color_selector</item>
         <item name="android:gravity">center</item>
-        <item name="android:paddingLeft">@dimen/SmallPadding</item>
-        <item name="android:paddingRight">@dimen/SmallPadding</item>
+        <item name="android:paddingLeft">@dimen/LittlePadding</item>
+        <item name="android:paddingRight">@dimen/LittlePadding</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minWidth">@dimen/SmallButtonWidth</item>
@@ -103,8 +109,8 @@
     </style>
 
     <style name="SolidSmallButtonStyle" parent="@style/SmallButtonStyle">
-        <item name="android:textColor">@color/white_color_selector</item>
-        <item name="android:background">@drawable/blue_btn_style</item>
+        <item name="android:textColor">@color/base_color</item>
+        <item name="android:background">@drawable/white_btn_style</item>
     </style>
 
     <style name="SwitchButtonStyle">
@@ -177,4 +183,32 @@
         <item name="android:layout_marginLeft">@dimen/DialogPadding</item>
         <item name="android:layout_marginRight">@dimen/DialogPadding</item>
     </style>
+
+    <style name="smallCustomProgressBar" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/progress_small_holo</item>
+        <item name="android:indeterminateDuration">1500</item>
+        <item name="android:paddingLeft">6.0dip</item>
+        <item name="android:paddingRight">6.0dip</item>
+    </style>
+
+    <style name="Theme.notAnimation" parent="Base_Theme">
+        <item name="android:windowAnimationStyle">@style/notAnimation</item>
+    </style>
+
+    <style name="notAnimation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
+
+
 </resources>

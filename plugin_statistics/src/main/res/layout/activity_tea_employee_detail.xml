@@ -12,19 +12,87 @@
         android:orientation="vertical"
         android:padding="@dimen/LargePadding">
 
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/base_text_dark_color"
+            android:textSize="@dimen/LargerTextSize"
+            android:layout_marginBottom="@dimen/LargePadding"/>
+
+        <TextView
+            android:id="@+id/totalCountTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/base_text_middle_color"
+            android:textSize="@dimen/BasicTextSize"
+            android:layout_marginBottom="@dimen/LittlePadding"/>
+
+        <TextView
+            android:id="@+id/totalWeightTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/base_text_middle_color"
+            android:textSize="@dimen/BasicTextSize"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/filterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:paddingTop="@dimen/NormalPadding"
+            android:paddingLeft="@dimen/LargePadding"
+            android:paddingRight="@dimen/NormalPadding"
+            android:paddingBottom="@dimen/NormalPadding"
+            android:gravity="center_vertical"
+            android:background="@color/white">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/timeLayout"
                 android:layout_width="0.0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="采茶数据统计"
-                android:textColor="@color/base_text_dark_color"
-                android:textSize="@dimen/BiggestTextSize"/>
+                android:orientation="horizontal"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/startTimeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/base_text_middle_color"
+                    android:textSize="@dimen/BasicTextSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="~"
+                    android:textColor="@color/base_text_middle_color"
+                    android:textSize="@dimen/BasicTextSize" />
+
+                <TextView
+                    android:id="@+id/endTimeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/base_text_middle_color"
+                    android:textSize="@dimen/BasicTextSize"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/cancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="@dimen/SmallerTextSize"
+                android:background="@drawable/filter_icon_bg"
+                android:layout_marginLeft="@dimen/SmallPadding" />
 
             <TextView
                 android:id="@+id/filterBtn"
@@ -32,70 +100,42 @@
                 android:layout_height="wrap_content"
                 android:text="筛选"
                 android:textColor="@color/white"
-                android:textSize="@dimen/BasicTextSize"
-                android:background="@drawable/filter_icon_bg"/>
-
+                android:textSize="@dimen/SmallerTextSize"
+                android:background="@drawable/filter_icon_bg"
+                android:layout_marginLeft="@dimen/SmallPadding" />
         </LinearLayout>
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/LargePadding"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/startTimeTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2017-09-01"
-                android:textColor="@color/base_text_middle_color"
-                android:textSize="@dimen/BasicTextSize"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="~"
-                android:textColor="@color/base_text_middle_color"
-                android:textSize="@dimen/BasicTextSize"
-                android:layout_marginLeft="@dimen/SmallPadding"
-                android:layout_marginRight="@dimen/SmallPadding"/>
-
-            <TextView
-                android:id="@+id/endTimeTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2017-09-28"
-                android:textColor="@color/base_text_middle_color"
-                android:textSize="@dimen/BasicTextSize"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/totalCountTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="采茶次数：34次"
-            android:textColor="@color/base_text_middle_color"
-            android:textSize="@dimen/BasicTextSize"
-            android:layout_marginTop="@dimen/LittlePadding"/>
-
-        <TextView
-            android:id="@+id/totalWeightTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="采茶重量总计：13774848.9399Kg"
-            android:textColor="@color/base_text_middle_color"
-            android:textSize="@dimen/BasicTextSize"
-            android:layout_marginTop="@dimen/LittlePadding"/>
+            android:layout_height="0.5dp"
+            android:background="@color/list_divider"
+            android:layout_marginLeft="@dimen/LargePadding"/>
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/addRecordBtn"
+            android:layout_width="50.0dip"
+            android:layout_height="50.0dip"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textSize="@dimen/BiggestTextSize"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_margin="@dimen/LargerPadding"
+            android:background="@drawable/add_tea_record_bg"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

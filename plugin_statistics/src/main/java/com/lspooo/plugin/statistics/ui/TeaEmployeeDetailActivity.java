@@ -1,18 +1,20 @@
 package com.lspooo.plugin.statistics.ui;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lspooo.plugin.common.common.BroadcastIntent;
 import com.lspooo.plugin.common.common.adapter.BaseQuickAdapter;
+import com.lspooo.plugin.common.common.dialog.ECAlertDialog;
 import com.lspooo.plugin.common.common.menu.ActionMenu;
 import com.lspooo.plugin.common.common.menu.OverflowSubMenuHelper;
 import com.lspooo.plugin.common.common.menu.RXContentMenuHelper;
@@ -22,15 +24,19 @@ import com.lspooo.plugin.common.tools.DateStyle;
 import com.lspooo.plugin.common.tools.DateUtil;
 import com.lspooo.plugin.common.ui.CommonActivity;
 import com.lspooo.plugin.statistics.R;
+import com.lspooo.plugin.statistics.R2;
+import com.lspooo.plugin.statistics.common.Constant;
 import com.lspooo.plugin.statistics.dao.bean.DBTeaEmployeeTools;
 import com.lspooo.plugin.statistics.dao.bean.DBTeaRecordTools;
 import com.lspooo.plugin.statistics.dao.bean.TeaEmployee;
 import com.lspooo.plugin.statistics.dao.bean.TeaRecord;
 import com.lspooo.plugin.statistics.ui.adapter.TeaRecordListAdapter;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by LSP on 2017/10/11.
@@ -41,7 +47,11 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
     private RecyclerView mRecyclerView;
     private TeaRecordListAdapter mAdapter;
     private View statisticsLayout;
+    private View filterLayout;
     private TextView filterBtn;
+    private TextView cancelBtn;
+    private View timeLayout;
+    private TextView nameTv;
     private TextView startTimeTv;
     private TextView endTimeTv;
     private TextView totalCountTv;
@@ -52,6 +62,10 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
     private RXContentMenuHelper mMenuHelper;
 
     private List<TeaRecord> recordList = new ArrayList<>();
+    private long filterStart = 0;
+    private long filterEnd = 0;
+
+    private boolean isFilter = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,11 +83,11 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
             return;
         }
         initView();
-        loadTeaRecord(0, 0);
+        loadTeaRecord();
     }
 
     private void initView() {
-        setActionBarTitle(employee.getId() + ".  " + employee.getName());
+        setActionBarTitle("采茶数据统计");
         setActionMenuItem(0, R.drawable.ic_more_white, new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -83,6 +97,7 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
         });
 
         statisticsLayout = findViewById(R.id.statisticsLayout);
+        filterLayout = findViewById(R.id.filterLayout);
         filterBtn = (TextView) findViewById(R.id.filterBtn);
         filterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,26 +106,33 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
                     return;
                 }
                 Intent intent = new Intent(TeaEmployeeDetailActivity.this, DateFilterSelectActivity.class);
-                intent.putExtra("startDate", Long.parseLong(recordList.get(0).getTime()));
-                intent.putExtra("endDate", Long.parseLong(recordList.get(recordList.size() - 1).getTime()));
                 startActivityForResult(intent, 0x1);
-
-//                ECAlertDialog dialog = ECAlertDialog.buildAlert(TeaEmployeeDetailActivity.this, "哈哈哈哈", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                    }
-//                });
-//                dialog.setTitle("提示");
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable());
-//                dialog.setCancelable(false);
-//                dialog.show();
             }
         });
+        cancelBtn = (TextView) findViewById(R.id.cancelBtn);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterStart = 0;
+                filterEnd = 0;
+                isFilter = false;
+                loadTeaRecord();
+            }
+        });
+        timeLayout = findViewById(R.id.timeLayout);
+        nameTv = (TextView) findViewById(R.id.nameTv);
         startTimeTv = (TextView) findViewById(R.id.startTimeTv);
         endTimeTv = (TextView) findViewById(R.id.endTimeTv);
         totalCountTv = (TextView) findViewById(R.id.totalCountTv);
         totalWeightTv = (TextView) findViewById(R.id.totalWeightTv);
+        findViewById(R.id.addRecordBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeaEmployeeDetailActivity.this, InputTeaRecordActivity.class);
+                intent.putExtra("employeeId", employee.getId());
+                startActivity(intent);
+            }
+        });
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -138,6 +160,7 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
                 return true;
             }
         });
+        nameTv.setText(employee.getId() + ". " + employee.getName());
     }
 
     private void initOverflowSubMenuAction() {
@@ -148,11 +171,26 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
                 public void OnActionMenuSelected(MenuItem menu, int position) {
                     switch (menu.getItemId()){
                         case 0:
-                            Intent intent = new Intent(TeaEmployeeDetailActivity.this, AddTeaRecordActivity.class);
+                            Intent intent = new Intent(TeaEmployeeDetailActivity.this, InputTeaRecordActivity.class);
+                            intent.putExtra(Constant.EXTRA_TEA_RECORD_TYPE, Constant.TYPE_ADD);
                             intent.putExtra("employeeId", employee.getId());
                             startActivity(intent);
                             break;
                         case 1:
+                            ECAlertDialog dialog = new ECAlertDialog.Builder(TeaEmployeeDetailActivity.this)
+                                    .setTitle(R.string.app_dialog_title)
+                                    .setMessage(R.string.confirm_delete_tea_employee)
+                                    .setPositiveButton(R.string.app_dialog_confirm, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    }).setPositiveColor(Color.RED)
+                                    .setNegativeButton(R.string.app_dialog_cancel, null)
+                                    .create();
+                            if (dialog != null) {
+                                dialog.show();
+                            }
                             break;
                     }
                 }
@@ -160,37 +198,62 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
             mOverflowHelper.setOnCreateActionMenuListener(new ActionMenu.OnCreateActionMenuListener() {
                 @Override
                 public void OnCreateActionMenu(ActionMenu menu) {
-                    menu.add(0, R.string.add_tea_record , R.drawable.ic_close_black);
-                    menu.add(1, R.string.del_tea_employee , R.drawable.ic_close_black);
+                    menu.add(0, R.string.add_tea_record);
+                    menu.add(1, R.string.del_tea_employee);
                 }
             });
         }
         mOverflowHelper.tryShow();
     }
 
-    private void loadTeaRecord(long start, long end){
+    private void loadTeaRecord(){
         recordList.clear();
         List<TeaRecord> result;
-        if (start > 0 && end > 0){
-            result = DBTeaRecordTools.getInstance().queryTeaRecord(employee.getId(), start + "", end + "");
+        if (isFilter){
+            result = DBTeaRecordTools.getInstance().queryTeaRecord(employee.getId(), filterStart + "", filterEnd + "");
         } else{
             result = DBTeaRecordTools.getInstance().queryTeaRecord(employee.getId());
         }
         if (result != null && result.size() > 0){
             recordList.addAll(result);
             mAdapter.notifyDataSetChanged();
-            statisticsLayout.setVisibility(View.VISIBLE);
-            startTimeTv.setText(DateUtil.DateToString(new Date(start > 0 ? start : Long.parseLong(recordList.get(0).getTime())), DateStyle.YYYY_MM_DD));
-            endTimeTv.setText(DateUtil.DateToString(new Date(end > 0 ? end : Long.parseLong(recordList.get(recordList.size() - 1).getTime())), DateStyle.YYYY_MM_DD));
+        }
+        initTeaStatisticLayout();
+    }
+
+    private void initTeaStatisticLayout(){
+
+        if (recordList.size() > 0){
             totalCountTv.setText("采茶次数：" + recordList.size() + "次");
-            float sum = 0;
+            Double sum = 0.0;
             for (TeaRecord record : recordList){
-                sum += record.getWeight();
+                BigDecimal a = new BigDecimal(String.valueOf(record.getWeight()));
+                BigDecimal b = new BigDecimal(String.valueOf(sum));
+                BigDecimal c = b.add(a);
+                sum = c.doubleValue();
             }
-            totalWeightTv.setText("采茶重量总计：" + sum + "Kg");
+            totalWeightTv.setText("采茶重量总计：" + sum + "斤");
+            totalWeightTv.setVisibility(View.VISIBLE);
+            filterLayout.setVisibility(View.VISIBLE);
         } else{
-            mAdapter.setEmptyView(R.layout.layout_empty_tea_record, (ViewGroup) mRecyclerView.getParent());
-            statisticsLayout.setVisibility(View.GONE);
+            totalWeightTv.setVisibility(View.GONE);
+            if (isFilter){
+                totalCountTv.setText("此段时间内该员工没有过采茶记录...");
+                filterLayout.setVisibility(View.VISIBLE);
+            } else{
+                totalCountTv.setText("该员工尚未有过采茶记录...");
+                filterLayout.setVisibility(View.GONE);
+            }
+        }
+
+        if (isFilter){
+            timeLayout.setVisibility(View.VISIBLE);
+            cancelBtn.setVisibility(View.VISIBLE);
+            startTimeTv.setText(DateUtil.DateToString(DateUtil.StringToDate(filterStart + "", DateStyle.YYYYMMDD), DateStyle.YYYY_MM_DD));
+            endTimeTv.setText(DateUtil.DateToString(DateUtil.StringToDate(filterEnd + "", DateStyle.YYYYMMDD), DateStyle.YYYY_MM_DD));
+        } else{
+            timeLayout.setVisibility(View.INVISIBLE);
+            cancelBtn.setVisibility(View.GONE);
         }
     }
 
@@ -201,7 +264,8 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
         mMenuHelper.setOnCreateActionMenuListener(new ActionMenu.OnCreateActionMenuListener() {
             @Override
             public void OnCreateActionMenu(ActionMenu menu) {
-                menu.add(1 , R.string.app_del);
+                menu.add(1 , R.string.app_modify);
+                menu.add(2 , R.string.app_del);
             }
         });
         mMenuHelper.setOnActionMenuItemSelectedListener(new ActionMenu.OnActionMenuItemSelectedListener() {
@@ -209,9 +273,29 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
             public void OnActionMenuSelected(MenuItem menu, int position) {
                 switch (menu.getItemId()){
                     case 1:
-                        recordList.remove(record);
-                        mAdapter.notifyDataSetChanged();
-                        DBTeaRecordTools.getInstance().delete(record);
+                        Intent intent = new Intent(TeaEmployeeDetailActivity.this, InputTeaRecordActivity.class);
+                        intent.putExtra(Constant.EXTRA_TEA_RECORD_TYPE, Constant.TYPE_MODIFY);
+                        intent.putExtra("record", record);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        ECAlertDialog dialog = new ECAlertDialog.Builder(TeaEmployeeDetailActivity.this)
+                                .setTitle(R.string.app_dialog_title)
+                                .setMessage(R.string.confirm_delete_tea_record)
+                                .setPositiveButton(R.string.app_dialog_confirm, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        recordList.remove(record);
+                                        mAdapter.notifyDataSetChanged();
+                                        initTeaStatisticLayout();
+                                        DBTeaRecordTools.getInstance().delete(record);
+                                    }
+                                }).setPositiveColor(Color.RED)
+                                .setNegativeButton(R.string.app_dialog_cancel, null)
+                                .create();
+                        if (dialog != null) {
+                            dialog.show();
+                        }
                         break;
                     default:
                         break;
@@ -228,9 +312,10 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
             if (resultCode != RESULT_OK || data == null){
                 return;
             }
-            long startDate = data.getLongExtra("startDate", -1);
-            long endDate = data.getLongExtra("endDate", -1);
-            loadTeaRecord(startDate, endDate);
+            filterStart = data.getLongExtra("startDate", -1);
+            filterEnd = data.getLongExtra("endDate", -1);
+            isFilter = true;
+            loadTeaRecord();
         }
     }
 
@@ -243,7 +328,7 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
     protected void onHandleReceiver(Context context, Intent intent) {
         super.onHandleReceiver(context, intent);
         if (BroadcastIntent.ACTION_SYNC_TEA_RECORD.equals(intent.getAction())){
-            loadTeaRecord(0, 0);
+            loadTeaRecord();
         }
     }
 
@@ -256,4 +341,7 @@ public class TeaEmployeeDetailActivity extends CommonActivity{
     public int getLayoutId() {
         return R.layout.activity_tea_employee_detail;
     }
+
+
+
 }

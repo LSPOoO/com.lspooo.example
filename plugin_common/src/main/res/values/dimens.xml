@@ -13,10 +13,14 @@
     <dimen name="NormalTextSize">16.0sp</dimen>
     <dimen name="BasicTextSize">15.0dip</dimen>
     <dimen name="BigTextSize">17.0sp</dimen>
-    <dimen name="BiggestTextSize">24.0sp</dimen>
     <dimen name="BiggerTextSize">22.0sp</dimen>
+    <dimen name="BiggestTextSize">24.0sp</dimen>
+    <dimen name="LargeTextSize">28.0sp</dimen>
+    <dimen name="LargerTextSize">32.0sp</dimen>
+    <dimen name="HintTextSize">14.0dip</dimen>
 
     <dimen name="OneDPPadding">1.0dip</dimen>
+    <dimen name="TwoPadding">2.0dip</dimen>
     <dimen name="SmallestPadding">1.0dip</dimen>
     <dimen name="SmallerPadding">3.0dip</dimen>
     <dimen name="LittlePadding">6.0dip</dimen>
@@ -25,24 +29,29 @@
     <dimen name="LargePadding">16.0dip</dimen>
     <dimen name="LargerPadding">24.0dip</dimen>
     <dimen name="LargestPadding">32.0dip</dimen>
+    <dimen name="HighPadding">48.0dip</dimen>
 
     <dimen name="list_divider_height">1.0px</dimen>
 
     <dimen name="NormalIconSize">32.0dip</dimen>
     <dimen name="NormalButtonHeight">48.0dip</dimen>
     <dimen name="SmallListItemHeight">48.0dip</dimen>
+    <dimen name="SmallerListItemHeight">40.0dip</dimen>
     <dimen name="NormalListItemHeight">64.0dip</dimen>
-    <dimen name="SmallButtonWidth">60.0dip</dimen>
-    <dimen name="SmallButtonHeight">32.0dip</dimen>
+    <dimen name="SmallButtonWidth">54.0dip</dimen>
+    <dimen name="SmallButtonHeight">30.0dip</dimen>
 
     <dimen name="MiniMenuIconSize">32.0dip</dimen>
+    <dimen name="SmallMenuIconSize">18.0dip</dimen>
     <dimen name="MiniAvatarSize">32.0dip</dimen>
     <dimen name="MinMenuWidth">180.0dip</dimen>
     <dimen name="MinSubMenuWidth">140.0dip</dimen>
     <dimen name="MinSubMenuHeight">48.0dip</dimen>
 
     <dimen name="MinDialogWidth">320.0dip</dimen>
+    <dimen name="MinDialogHeight">150.0dip</dimen>
     <dimen name="MinDialogTitleHeight">64.0dip</dimen>
+    <dimen name="MinDialogButtonWidth">64.0dip</dimen>
     <dimen name="DialogTitleTextSize">20.0dip</dimen>
     <dimen name="DialogPadding">40.0dip</dimen>
     <dimen name="LittleDialogPadding">20.0dip</dimen>
@@ -57,5 +66,6 @@
     <dimen name="ksw_md_thumb_shadow_offset">2dp</dimen>
 
     <dimen name="bottom_tab_bar_height">54.0dip</dimen>
+
 
 </resources>

@@ -1,15 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <LinearLayout
+        android:id="@+id/statisticsLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/LargePadding">
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="统计结果"
+                    android:textColor="@color/base_text_dark_color"
+                    android:textSize="@dimen/LargeTextSize"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/NormalPadding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="开始时间："
+                        android:textColor="@color/base_text_light_color"
+                        android:textSize="@dimen/BasicTextSize"/>
+
+                    <TextView
+                        android:id="@+id/startTimeTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2017-09-01"
+                        android:textColor="@color/base_text_light_color"
+                        android:textSize="@dimen/BasicTextSize"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/LittlePadding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="结束时间："
+                        android:textColor="@color/base_text_light_color"
+                        android:textSize="@dimen/BasicTextSize"/>
+
+                    <TextView
+                        android:id="@+id/endTimeTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2017-09-28"
+                        android:textColor="@color/base_text_light_color"
+                        android:textSize="@dimen/BasicTextSize"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/totalCountTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/base_text_light_color"
+                    android:textSize="@dimen/BasicTextSize"
+                    android:layout_marginTop="@dimen/LittlePadding"/>
+
+                <TextView
+                    android:id="@+id/totalWeightTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/base_text_light_color"
+                    android:textSize="@dimen/BasicTextSize"
+                    android:layout_marginTop="@dimen/LittlePadding"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/cancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="@dimen/SmallerTextSize"
+                android:background="@drawable/cancel_filter_icon_bg"
+                android:layout_marginLeft="@dimen/SmallPadding"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bigFilterBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:text="Go"
+        android:textSize="@dimen/LargeTextSize"
+        android:background="@drawable/big_filter_icon_bg"
+        android:gravity="center"/>
+
+
+</RelativeLayout>

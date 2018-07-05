@@ -497,6 +497,55 @@ public abstract class BaseActivity extends AbsActivity{
     }
 
     /**
+     * 根据提供的图片添加一个按钮菜单
+     *
+     * @param menuId            按钮菜单ID
+     * @param resId             按钮资源图片
+     * @param itemClickListener 按钮事件回调监听
+     */
+    protected final void setActionMenuItem(int menuId, int resId, String title, MenuItem.OnMenuItemClickListener itemClickListener) {
+        this.setActionMenuItem(menuId, resId, title, itemClickListener, null, ActionMenuItem.ActionType.TEXT);
+    }
+
+    /**
+     * 设置状态栏右边显示按钮
+     *
+     * @param title             标题文本
+     * @param resId             资源图片
+     * @param itemClickListener 按钮事件回调监听
+     * @param longClickListener 按钮长按事件回调
+     */
+    protected final void setActionMenuItem(int title, int resId, MenuItem.OnMenuItemClickListener itemClickListener, View.OnLongClickListener longClickListener) {
+        this.setActionMenuItem(0, resId, getString(title), itemClickListener, longClickListener, ActionMenuItem.ActionType.TEXT);
+    }
+
+
+    /**
+     * 设置文字显示actionBar
+     *
+     * @param menuId            按钮菜单ID
+     * @param title             按钮显示文本内容
+     * @param itemClickListener 按钮事件回调监听
+     */
+    protected final void setActionMenuItem(int menuId, String title, MenuItem.OnMenuItemClickListener itemClickListener) {
+        this.setActionMenuItem(menuId, 0, title, itemClickListener, null, ActionMenuItem.ActionType.TEXT);
+    }
+
+
+    /**
+     * 设置状态栏右边显示按钮
+     *
+     * @param menuId            按钮菜单ID
+     * @param title             按钮显示文本内容
+     * @param itemClickListener 按钮事件回调监听
+     * @param actionType        当前按钮显示风格
+     */
+    protected final void setActionMenuItem(int menuId, String title, MenuItem.OnMenuItemClickListener itemClickListener, ActionMenuItem.ActionType actionType) {
+        this.setActionMenuItem(menuId, 0, title, itemClickListener, null, actionType);
+    }
+
+
+    /**
      * 根据提供的资源文件构建一个菜单按钮
      *
      * @param menuId            按钮编号

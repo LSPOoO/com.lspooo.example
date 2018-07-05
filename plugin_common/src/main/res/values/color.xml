@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="base_color">#ff212540</color>
+    <color name="base_color">#ff303F9F</color>
     // 应用统一色对应的三个状态
     <color name="color_normal">#ff212540</color>
     <color name="color_pressed">#ff212540</color>
@@ -43,5 +43,11 @@
     <color name="ksw_md_solid_disable">#FFFFFF</color>
     <color name="ksw_md_solid_checked_disable">#ffffff</color>
     <color name="ksw_md_solid_checked_stroke_disable">#929fbb</color>
+
+    <color name="pressed_text_color">#80353535</color>
+    <color name="enabled_text_color">#4d353535</color>
+
+    <color name="dialog_button_text_color">@color/base_color</color>
+
 
 </resources>

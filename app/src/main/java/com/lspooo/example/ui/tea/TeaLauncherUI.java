@@ -7,7 +7,6 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import com.lspooo.example.R;
-import com.lspooo.example.ui.PlusSubMenuHelper;
 import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
 import com.lspooo.plugin.common.ui.BaseFragment;
 import com.lspooo.plugin.common.ui.CommonActivity;
@@ -19,7 +18,7 @@ import com.lspooo.plugin.statistics.ui.TabTeaEmployeeFragment;
 
 public class TeaLauncherUI extends CommonActivity{
 
-    private PlusSubMenuHelper mPlusSubMenuHelper;
+    private TeaPlusSubMenuHelper mTeaPlusSubMenuHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,23 +43,23 @@ public class TeaLauncherUI extends CommonActivity{
     }
 
     private void controlPlusSubMenu() {
-        if (mPlusSubMenuHelper == null) {
-            mPlusSubMenuHelper = new PlusSubMenuHelper(this);
+        if (mTeaPlusSubMenuHelper == null) {
+            mTeaPlusSubMenuHelper = new TeaPlusSubMenuHelper(this);
         }
-        if (mPlusSubMenuHelper.isShowing()) {
-            mPlusSubMenuHelper.dismiss();
+        if (mTeaPlusSubMenuHelper.isShowing()) {
+            mTeaPlusSubMenuHelper.dismiss();
             return;
         }
-        mPlusSubMenuHelper.setOnDismissListener(null);
-        mPlusSubMenuHelper.tryShow();
+        mTeaPlusSubMenuHelper.setOnDismissListener(null);
+        mTeaPlusSubMenuHelper.tryShow();
     }
 
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (mPlusSubMenuHelper != null && mPlusSubMenuHelper.isShowing()) {
-            mPlusSubMenuHelper.dismiss();
+        if (mTeaPlusSubMenuHelper != null && mTeaPlusSubMenuHelper.isShowing()) {
+            mTeaPlusSubMenuHelper.dismiss();
         }
     }
 
@@ -68,8 +67,8 @@ public class TeaLauncherUI extends CommonActivity{
     public boolean dispatchKeyEvent(KeyEvent event) {
         if ((event.getKeyCode() == KeyEvent.KEYCODE_BACK)
                 && event.getAction() == KeyEvent.ACTION_UP) {
-            if (mPlusSubMenuHelper != null && mPlusSubMenuHelper.isShowing()) {
-                mPlusSubMenuHelper.dismiss();
+            if (mTeaPlusSubMenuHelper != null && mTeaPlusSubMenuHelper.isShowing()) {
+                mTeaPlusSubMenuHelper.dismiss();
                 return true;
             }
         }
@@ -85,5 +84,11 @@ public class TeaLauncherUI extends CommonActivity{
     @Override
     public int getLayoutId() {
         return R.layout.activity_tea_launcher;
+    }
+
+
+    @Override
+    protected boolean isEnableSwipe() {
+        return false;
     }
 }

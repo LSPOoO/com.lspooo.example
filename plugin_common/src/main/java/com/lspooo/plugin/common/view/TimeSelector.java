@@ -26,7 +26,7 @@ import java.util.Date;
 public class TimeSelector {
 
     public interface ResultHandler {
-        void handle(Date time);
+        void handle(Calendar calendar);
     }
 
     public enum SCROLLTYPE {
@@ -166,7 +166,7 @@ public class TimeSelector {
         tv_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                handler.handle(selectedCalender.getTime());
+                handler.handle(selectedCalender);
                 seletorDialog.dismiss();
             }
         });

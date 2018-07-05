@@ -1,0 +1,8 @@
+<resources>
+    <string name="loading_tips">正在加载...</string>
+    <string name="location_no_search_result">无搜索结果</string>
+    <string name="location_info">位置</string>
+    <string name="location_selected">[位置]</string>
+    <string name="location_search_hint">搜索地点</string>
+    <string name="location_address">[地址]</string>
+</resources>

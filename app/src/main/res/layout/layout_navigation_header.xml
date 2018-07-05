@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="180.0dip"
+                android:orientation="vertical"
+                android:background="@color/base_color"
+                android:paddingLeft="@dimen/NormalPadding"
+                android:paddingBottom="@dimen/LargePadding">
+
+                <TextView
+                    android:id="@+id/name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/BigTextSize"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/SmallPadding"
+                    android:layout_marginLeft="@dimen/SmallerPadding"/>
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="60.0dip"
+                    android:layout_height="60.0dip"
+                    app:srcCompat="@android:drawable/sym_def_app_icon"
+                    android:layout_above="@id/name_tv" />
+
+            </RelativeLayout>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="我的消息"
+                settings:icon="@drawable/ic_shopping"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="我的VIP"
+                settings:icon="@drawable/ic_emoj"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="商城"
+                settings:icon="@drawable/ic_emoj"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="游戏推荐Beta"
+                settings:icon="@drawable/ic_favorite"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="在线听歌免流量"
+                settings:icon="@drawable/ic_emoj"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5.0dip"
+                android:background="@color/background_color"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="我的好友"
+                settings:icon="@drawable/ic_favorite"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="附近的人"
+                settings:icon="@drawable/ic_shopping"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5.0dip"
+                android:background="@color/background_color"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="个性换肤"
+                settings:icon="@drawable/ic_favorite"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="听歌识曲"
+                settings:icon="@drawable/ic_emoj"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="定时停止播放"
+                settings:icon="@drawable/ic_favorite"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="扫一扫"
+                settings:icon="@drawable/ic_shopping"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="音乐闹钟"
+                settings:icon="@drawable/ic_favorite"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="驾驶模式"
+                settings:icon="@drawable/ic_shopping"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="音乐云盘"
+                settings:icon="@drawable/ic_emoj"/>
+
+            <com.lspooo.example.view.SettingMenuItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                settings:title="优惠券"
+                settings:icon="@drawable/ic_favorite"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/background_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/SmallPadding">
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_favorite"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/NormalTextSize"
+                android:textColor="#404040"
+                android:text="夜间模式"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/SmallerPadding"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_setting"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/NormalTextSize"
+                android:textColor="#404040"
+                android:text="设置"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/SmallerPadding"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_shopping"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/NormalTextSize"
+                android:textColor="#404040"
+                android:text="退出"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/SmallerPadding"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

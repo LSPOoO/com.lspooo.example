@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">Plugin_Statistics</string>
-
     <string name="add_tea_employee">新增采茶工</string>
     <string name="del_tea_employee">删除采茶工</string>
     <string name="add_tea_record">添加采茶记录</string>
+    <string name="modify_tea_record">修改采茶记录</string>
     <string name="tea_statistics">采茶统计</string>
+    <string name="tea_date">采茶时间表</string>
+
+    <string name="confirm_delete_tea_employee">确认删除该员工？</string>
+    <string name="confirm_delete_tea_record">确认删除该条采茶记录？</string>
+
+
 </resources>

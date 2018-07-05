@@ -17,7 +17,6 @@
             android:id="@+id/setting_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_setting"
             android:layout_marginLeft="@dimen/SmallerPadding"
             android:layout_marginRight="@dimen/NormalPadding"/>
 
@@ -33,7 +32,6 @@
                 android:id="@+id/setting_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="设置"
                 android:textSize="@dimen/NormalTextSize"
                 android:textColor="@color/base_text_dark_color"/>
 
@@ -41,7 +39,6 @@
                 android:id="@+id/setting_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="设置的子标题描述"
                 android:textSize="@dimen/SmallTextSize"
                 android:textColor="@color/base_text_light_color"
                 android:layout_marginTop="@dimen/SmallerPadding"

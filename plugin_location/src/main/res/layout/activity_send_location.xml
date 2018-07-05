@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/map_content"
+        android:layout_width="match_parent"
+        android:layout_height="280.0dip">
+
+        <com.lspooo.plugin.location.view.CustomMapView
+            android:id="@+id/g_mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:apiKey="00e3d061e7debe5f88aec44e0b549b76"
+            android:clickable="true" />
+
+        <FrameLayout
+            android:id="@+id/control_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/locate_to_my_position"
+        android:layout_width="49.0dip"
+        android:layout_height="49.0dip"
+        android:layout_gravity="right"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginTop="215.0dip"
+        android:src="@drawable/rx_poi_mylocation_btn_bg" />
+
+    <RelativeLayout
+        android:id="@+id/poi_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ytx_map_list_height"
+        android:layout_marginTop="280.0dip"
+        android:background="@color/white">
+
+        <com.lspooo.plugin.location.view.LoadMoreListView
+            android:id="@+id/poi_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:cacheColorHint="#00000000"
+            android:layoutAnimation="@anim/list_anim_layout" />
+
+        <RelativeLayout
+            android:id="@+id/load"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:visibility="visible">
+
+            <ProgressBar
+                style="@style/largeCustomProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

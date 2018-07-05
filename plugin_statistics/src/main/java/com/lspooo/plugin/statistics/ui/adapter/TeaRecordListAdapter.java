@@ -34,8 +34,9 @@ public class TeaRecordListAdapter extends BaseQuickAdapter<TeaRecord, BaseViewHo
         TextView timeTv = helper.getView(R.id.timeTv);
         TextView nameTv = helper.getView(R.id.nameTv);
         if (item != null){
-            weightTv.setText("重量：" + item.getWeight() + "公斤");
-            timeTv.setText(DateUtil.DateToString(new Date(Long.parseLong(item.getTime())), DateStyle.YYYY_MM_DD));
+            weightTv.setText("重量：" + item.getWeight() + "斤");
+            Date date = DateUtil.StringToDate(item.getTime(), DateStyle.YYYYMMDD);
+            timeTv.setText(DateUtil.DateToString(date, DateStyle.YYYY_MM_DD));
             if (showName){
                 nameTv.setText(item.getName());
                 nameTv.setVisibility(View.VISIBLE);

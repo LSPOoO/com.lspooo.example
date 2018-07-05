@@ -1,1 +1,1 @@
-include ':app', ':plugin_common', ':plugin_retrofit', ':plugin_statistics', ':plugin_dao'
+include ':app', ':plugin_common', ':plugin_retrofit', ':plugin_statistics', ':plugin_dao', ':plugin_location', ':plugin_camera', ':plugin_share'

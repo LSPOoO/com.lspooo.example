@@ -1,42 +1,60 @@
 package com.lspooo.example.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.view.KeyEvent;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.lspooo.example.R;
+import com.lspooo.example.view.DrawerMenuView;
 import com.lspooo.example.view.LauncherBottomTabLayout;
 import com.lspooo.example.view.LauncherBottomTabView;
-import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
-import com.lspooo.plugin.common.ui.CommonActivity;
+import com.lspooo.plugin.common.tools.StatusBarUtilsForDrawerLayout;
 import com.lspooo.plugin.common.view.CustomViewPager;
 
 /**
  * Created by LSP on 2017/9/21.
  */
 
-public class LauncherUI extends CommonActivity {
+public class LauncherUI extends AppCompatActivity{
 
+    private DrawerLayout mDrawerLayout;
     private CustomViewPager mViewPager;
     private LauncherViewPagerAdapter mAdapter;
     private LauncherBottomTabLayout launcherBottomTabLayout;
-    private PlusSubMenuHelper mPlusSubMenuHelper;
     private int currentTabIndex = LauncherBottomTabView.TAB_COMMUNICATION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hideHomeActionMenu();
-        setActionBarTitle(getString(R.string.app_name));
-        setActionMenuItem(0, R.drawable.ic_more_white, new MenuItem.OnMenuItemClickListener() {
+        setContentView(R.layout.activity_launcher);
+        initToolbar();
+        initLauncherViewPager();
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        DrawerMenuView drawerMenuView = (DrawerMenuView) findViewById(R.id.drawer_menu_view);
+        drawerMenuView.setCloseDrawerListener(new DrawerMenuView.OnCloseDrawerListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                controlPlusSubMenu();
-                return true;
+            public void onCloseDrawer() {
+                mDrawerLayout.closeDrawers();
             }
         });
-        initLauncherViewPager();
+        StatusBarUtilsForDrawerLayout.setColorForDrawerLayout(this, mDrawerLayout, getResources().getColor(R.color.base_color));
     }
 
     private void initLauncherViewPager(){
@@ -53,37 +71,35 @@ public class LauncherUI extends CommonActivity {
         launcherBottomTabLayout.setTabSelected(LauncherBottomTabView.TAB_COMMUNICATION);
     }
 
-    private void controlPlusSubMenu() {
-        if (mPlusSubMenuHelper == null) {
-            mPlusSubMenuHelper = new PlusSubMenuHelper(this);
-        }
-        if (mPlusSubMenuHelper.isShowing()) {
-            mPlusSubMenuHelper.dismiss();
-            return;
-        }
-        mPlusSubMenuHelper.setOnDismissListener(null);
-        mPlusSubMenuHelper.tryShow();
-    }
-
-
     @Override
     protected void onPause() {
         super.onPause();
-        if (mPlusSubMenuHelper != null && mPlusSubMenuHelper.isShowing()) {
-            mPlusSubMenuHelper.dismiss();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
     @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if ((event.getKeyCode() == KeyEvent.KEYCODE_BACK)
-                && event.getAction() == KeyEvent.ACTION_UP) {
-            if (mPlusSubMenuHelper != null && mPlusSubMenuHelper.isShowing()) {
-                mPlusSubMenuHelper.dismiss();
-                return true;
-            }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_launcher, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_share_example) {
+            Intent intent = new Intent(this, ShareExampleActivity.class);
+            startActivity(intent);
+            return true;
         }
-        return super.dispatchKeyEvent(event);
+        return super.onOptionsItemSelected(item);
     }
 
     private ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -115,13 +131,4 @@ public class LauncherUI extends CommonActivity {
         }
     };
 
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_launcher;
-    }
-
-    @Override
-    public BasePresenter getPresenter() {
-        return null;
-    }
 }

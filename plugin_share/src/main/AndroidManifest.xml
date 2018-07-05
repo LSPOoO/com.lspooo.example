@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lspooo.plugin.share" >
+
+    <application
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:allowBackup="false">
+
+        <activity android:name="com.lspooo.example.wxapi.WXEntryActivity"
+            android:launchMode="singleTop"
+            android:exported="true"/>   //注意这个属性一定是true,不然微信不能调用
+
+
+
+    </application>
+
+
+
+</manifest>

@@ -3,6 +3,7 @@ package com.lspooo.example;
 import android.app.Application;
 
 import com.lspooo.plugin.common.LSPApplicationContext;
+import com.lspooo.plugin.share.ShareInitHelper;
 import com.lspooo.plugin.statistics.dao.StatisticsDao;
 import com.yuntongxun.plugin.greendao3.helper.DaoHelper;
 
@@ -20,5 +21,9 @@ public class LSPApplication extends Application{
 
         DaoHelper.initListener(new StatisticsDao());
         DaoHelper.initDAO(this);
+
+        //所有第三分享sdk初始化
+        ShareInitHelper.initShare(this);
     }
+
 }

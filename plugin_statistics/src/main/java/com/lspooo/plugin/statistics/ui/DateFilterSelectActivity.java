@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.lspooo.plugin.common.common.toast.ToastUtil;
 import com.lspooo.plugin.common.presenter.presenter.BasePresenter;
 import com.lspooo.plugin.common.tools.DateStyle;
 import com.lspooo.plugin.common.tools.DateUtil;
@@ -14,6 +15,7 @@ import com.lspooo.plugin.common.ui.CommonActivity;
 import com.lspooo.plugin.common.view.TimeSelector;
 import com.lspooo.plugin.statistics.R;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -33,12 +35,6 @@ public class DateFilterSelectActivity extends CommonActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startDate = getIntent().getLongExtra("startDate", -1);
-        endDate = getIntent().getLongExtra("endDate", -1);
-        if (startDate == -1 || endDate == -1){
-            finish();
-            return;
-        }
         initView();
     }
 
@@ -47,11 +43,16 @@ public class DateFilterSelectActivity extends CommonActivity{
         setActionMenuItem(0, R.drawable.ic_done_white, new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                if (startDate == 0 || endDate == 0){
+                    ToastUtil.info("请选择筛选时间段！");
+                    return true;
+                }
                 Intent intent = new Intent();
                 intent.putExtra("startDate", startDate);
                 intent.putExtra("endDate", endDate);
                 setResult(RESULT_OK, intent);
                 finish();
+                hideSoftKeyboard();
                 return true;
             }
         });
@@ -61,8 +62,9 @@ public class DateFilterSelectActivity extends CommonActivity{
             public void onClick(View v) {
                 TimeSelector timeSelector = new TimeSelector(DateFilterSelectActivity.this, new TimeSelector.ResultHandler() {
                     @Override
-                    public void handle(Date date) {
-                        startDate = date.getTime();
+                    public void handle(Calendar calendar) {
+                        Date date = calendar.getTime();
+                        startDate = Long.parseLong(DateUtil.DateToString(date, DateStyle.YYYYMMDD));
                         startTimeTv.setText(DateUtil.DateToString(date, DateStyle.YYYY_MM_DD));
                     }
                 }, "2017-01-01 00:00", "2020-12-01 00:00");
@@ -77,8 +79,10 @@ public class DateFilterSelectActivity extends CommonActivity{
             public void onClick(View v) {
                 TimeSelector timeSelector = new TimeSelector(DateFilterSelectActivity.this, new TimeSelector.ResultHandler() {
                     @Override
-                    public void handle(Date date) {
-                        endDate = date.getTime();
+                    public void handle(Calendar calendar) {
+
+                        Date date = calendar.getTime();
+                        endDate = Long.parseLong(DateUtil.DateToString(date, DateStyle.YYYYMMDD));
                         endTimeTv.setText(DateUtil.DateToString(date, DateStyle.YYYY_MM_DD));
                     }
                 }, "2017-01-01 00:00", "2020-12-01 00:00");
@@ -87,9 +91,6 @@ public class DateFilterSelectActivity extends CommonActivity{
             }
         });
         endTimeTv = (TextView) findViewById(R.id.endTimeTv);
-
-        startTimeTv.setText(DateUtil.DateToString(new Date(startDate), DateStyle.YYYY_MM_DD));
-        endTimeTv.setText(DateUtil.DateToString(new Date(endDate), DateStyle.YYYY_MM_DD));
     }
 
     @Override

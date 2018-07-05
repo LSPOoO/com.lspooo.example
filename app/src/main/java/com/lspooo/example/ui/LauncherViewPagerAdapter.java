@@ -5,12 +5,12 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 
+import com.lspooo.example.ui.tab.TabCommunicationFragment;
+import com.lspooo.example.ui.tab.TabContactFragment;
+import com.lspooo.example.ui.tab.TabFindFragment;
+import com.lspooo.example.ui.tab.TabSettingFragment;
 import com.lspooo.example.view.LauncherBottomTabView;
 import com.lspooo.plugin.common.ui.BaseFragment;
-import com.lspooo.plugin.statistics.ui.TabCommunicationFragment;
-import com.lspooo.plugin.statistics.ui.TabFindFragment;
-import com.lspooo.plugin.statistics.ui.TabSettingFragment;
-import com.lspooo.plugin.statistics.ui.TabTeaEmployeeFragment;
 
 /**
  * Created by LSP on 2017/9/24.
@@ -20,7 +20,6 @@ public class LauncherViewPagerAdapter extends FragmentStatePagerAdapter{
 
     private FragmentActivity context;
     private final SparseArray<Fragment> mTabViewCache = new SparseArray<>();
-
 
     public LauncherViewPagerAdapter(FragmentActivity fm) {
         super(fm.getSupportFragmentManager());
@@ -50,7 +49,7 @@ public class LauncherViewPagerAdapter extends FragmentStatePagerAdapter{
                 mFragment = (BaseFragment) Fragment.instantiate(context, TabCommunicationFragment.class.getName(), null);
                 break;
             case LauncherBottomTabView.TAB_CONTACT:
-                mFragment = (BaseFragment) Fragment.instantiate(context, TabTeaEmployeeFragment.class.getName(), null);
+                mFragment = (BaseFragment) Fragment.instantiate(context, TabContactFragment.class.getName(), null);
                 break;
             case LauncherBottomTabView.TAB_FIND:
                 mFragment = (BaseFragment) Fragment.instantiate(context, TabFindFragment.class.getName(), null);

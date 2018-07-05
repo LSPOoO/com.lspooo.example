@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/map_content"
+        android:layout_width="match_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1">
+
+        <com.lspooo.plugin.location.view.CustomMapView
+            android:id="@+id/g_mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:apiKey="00e3d061e7debe5f88aec44e0b549b76"
+            android:clickable="true" />
+
+        <FrameLayout
+            android:id="@+id/control_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/LargePadding"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[位置]"
+                android:textSize="@dimen/BiggerTextSize"
+                android:textColor="@color/base_text_dark_color"/>
+
+            <TextView
+                android:id="@+id/addressTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/SmallTextSize"
+                android:textColor="@color/base_text_light_color"
+                android:layout_marginTop="@dimen/SmallerPadding"
+                android:lines="1"
+                android:ellipsize="end"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/location_navigation"/>
+
+    </LinearLayout>
+
+</LinearLayout>

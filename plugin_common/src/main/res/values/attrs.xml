@@ -40,4 +40,9 @@
     <declare-styleable name="PickerView">
         <attr name="isLoop" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="edit_text_view">
+        <attr name="leftIcon" format="reference" />
+        <attr name="rightIcon" format="reference" />
+    </declare-styleable>
 </resources>

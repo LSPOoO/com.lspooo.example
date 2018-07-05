@@ -1,0 +1,8 @@
+<resources>
+    <string name="loading_tips">Loading...</string>
+    <string name="location_no_search_result">No search result</string>
+    <string name="location_info">Location</string>
+    <string name="location_selected">[Location]</string>
+    <string name="location_search_hint">Search for place</string>
+    <string name="location_address">[Address]</string>
+</resources>

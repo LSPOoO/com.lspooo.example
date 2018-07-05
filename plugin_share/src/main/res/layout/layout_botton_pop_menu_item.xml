@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:paddingRight="@dimen/NormalPadding">
+
+    <RelativeLayout
+        android:layout_width="60.0dip"
+        android:layout_height="60.0dip"
+        android:background="@drawable/bottom_menu_icon_bg">
+
+        <ImageView
+            android:id="@+id/menu_icon_iv"
+            android:layout_width="45.0dip"
+            android:layout_height="45.0dip"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/menu_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/SmallestTextSize"
+        android:textColor="@color/base_text_middle_color"
+        android:layout_marginTop="@dimen/SmallPadding"/>
+
+</LinearLayout>
